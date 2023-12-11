@@ -1,0 +1,20 @@
+{
+  "name": "art.spot",
+  "version": "1.0.0",
+  "description": "![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Camdah77/Art.Spot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Camdah77/Art.Spot/issues"
+  },
+  "homepage": "https://github.com/Camdah77/Art.Spot#readme"
+}
