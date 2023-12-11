@@ -16,7 +16,11 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
+    
+application = get_wsgi_application()
 
+# Use the PORT environment variable provided by Heroku
+application.listen(int(os.environ["PORT"]))
 
 if __name__ == '__main__':
     main()
