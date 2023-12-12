@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Artwork  
 from .forms import AddArtworkForm
 
@@ -12,7 +12,7 @@ def get_artwork(request):
 
 def add_artwork(request):
     if request.method == 'POST':
-        form = AddArtworkForm(request.POST, request.FILES)
+        form = AddArtworkForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('get_artwork')
@@ -23,3 +23,21 @@ def add_artwork(request):
         'form': form
     }
     return render(request, 'artworks/add_artwork.html', context)
+
+def edit_artwork(request, artwork_id):
+    artwork = get_object_or_404(Artwork, id=artwork_id)
+    if request.method == 'POST':
+        form = AddArtworkForm(request.POST, instance=artwork)
+        if form.is_valid():
+            form.save()
+            return redirect('get_artwork')
+    form = AddArtworkForm(instance=artwork)
+    context = {
+        'form': form
+    }
+    return render(request, 'artworks/edit_artwork.html', context)
+
+def delete_artwork(request, artwork_id):
+    artwork = get_object_or_404(Artwork, id=artwork_id)
+    artwork.delete()
+    return redirect('get_artwork')

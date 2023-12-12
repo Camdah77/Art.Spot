@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from artspot.views import get_artwork, add_artwork
+from artspot.views import get_artwork, add_artwork, edit_artwork, delete_artwork
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -23,4 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', get_artwork, name='get_artwork' ),
     path('add', add_artwork, name="add_artwork"),
+    path('edit/<artwork_id>', edit_artwork, name='edit'),
+    path('delete/<artwork_id>', delete_artwork, name='delete'),
 ]

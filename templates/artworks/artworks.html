@@ -15,11 +15,20 @@
     <table>
         {% for artwork in artworks %}
             <tr>
-                <td>{{ artwork.name }}</td>
                 <td>{{ artwork.artist }}</td>
                 <td>{{ artwork.category }}</td>
                 <td>{{ artwork.medium }}</td>
                 <td>{{ artwork.price }}</td>
+
+                <td>
+                    <a href="/edit/{{ artwork.id }}">
+                        <button>Edit</button>
+                    </a>
+                <td>
+                    <a href="/delete/{{ artwork.id }}">
+                        <button>Delete</button>
+                    </a>
+                    </td>
             </tr>
         {% endfor %}
     </table>
