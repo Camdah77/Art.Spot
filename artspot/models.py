@@ -3,8 +3,8 @@ from django.db import models
 class Artwork(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False)
     artist = models.CharField(max_length=50, null=False, blank=False)
-    length = models.PositiveIntegerField()
-    width = models.PositiveIntegerField()  # Correct the typo in the attribute name
+    length = models.PositiveIntegerField(db_column='length')
+    width = models.PositiveIntegerField(db_column='widht')
     depth = models.PositiveIntegerField()
     category = models.CharField(max_length=50, null=False, blank=False)
     medium = models.CharField(max_length=50, null=False, blank=False)

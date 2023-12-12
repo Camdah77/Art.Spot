@@ -7,4 +7,4 @@ def get_artwork(request):
     except Artwork.DoesNotExist:
         artwork_instance = None
 
-    return render(request, 'index.html', {'artwork': artwork_instance})
+    return render(request, 'artspot/index.html', {'artwork': artwork_instance})
