@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from artspot.views import get_artwork, add_artwork, edit_artwork, delete_artwork
+from artspot.views import landing_page, get_artwork, add_artwork, edit_artwork, delete_artwork
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', landing_page, name='landing_page'),
     path('', get_artwork, name='get_artwork' ),
     path('add', add_artwork, name="add_artwork"),
     path('edit/<artwork_id>', edit_artwork, name='edit'),

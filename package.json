@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/Camdah77/Art.Spot/issues"
   },
-  "homepage": "https://github.com/Camdah77/Art.Spot#readme"
+  "homepage": "https://github.com/Camdah77/Art.Spot#readme",
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.2"
+  },
+  "devDependencies": {}
 }
