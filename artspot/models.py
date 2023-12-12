@@ -8,7 +8,7 @@ class Artwork(models.Model):
     depth = models.PositiveIntegerField()
     category = models.CharField(max_length=50, null=False, blank=False)
     medium = models.CharField(max_length=50, null=False, blank=False)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
-
+    price = models.PositiveIntegerField()
+    
     def __str__(self):
         return self.name
