@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art.Spot</title>
+</head>
+<body>
+    <img srcset="https://res.cloudinary.com/dj9sie6nl/image/upload/v1702379784/Artspot/artspot_logotype.png"
+    alt="logtype">
+    <h1>Add an artwork</h1>
+    <form method="POST" action="add">
+        {% csrf_token %}
+        <div>
+            <p>
+                <label for="id_artworkname"> Name of artwork:</label>
+                <input type type="text" id="id_artworkname" name="artwork.name">
+            </p>
+        </div>
+         
+        <div>
+                <label for="id_artist"> Name of artist</label>
+                <input type type="text" id="id_artist" name="artwork.artist">
+            </p>
+        </div>
+        
+        <div>
+            <p>
+            <label for="id_category"> Type of Art</label>
+            <input type type="text" id="id_category" name="artwork.category">
+        </p>
+    </div>
+    
+    <div>
+        <p>
+        <label for="id_medium"> Used Medium</label>
+        <input type type="text" id="id_category" name="artwork.medium">
+    </p>
+</div>
+
+
+    <div>
+        <p>
+        <label for="id_price">Price</label>
+        <input type type="text" id="id_price" name="artwork.price">
+    </p>
+    </div>
+
+        <div> 
+            <p>
+                <button type="submit">Show the world! </button>
+            </p>
+        </div>
+
+    </form>
+    
+</body>
+</html>
