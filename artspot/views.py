@@ -7,4 +7,4 @@ def get_artwork(request):
         'artworks': artworks  # Fix the variable name here
     }
 
-    return render(request, 'artspot/artworks/artworks.html', context)
+    return render(request, 'artworks/artworks.html', context)
