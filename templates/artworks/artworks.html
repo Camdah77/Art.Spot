@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +8,10 @@
     <title>Art.Spot</title>
 </head>
 <body>
-    
+    <img src="{{ MEDIA_URL }}images/hero-artspot.jpg" alt="img">
+
     <h1>Available artworks</h1>
-  
+
     <table>
         {% for artwork in artworks %}
             <tr>
@@ -19,9 +22,5 @@
             </tr>
         {% endfor %}
     </table>
-    
-    
-    
-     
 </body>
 </html>
