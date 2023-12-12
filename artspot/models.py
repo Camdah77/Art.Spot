@@ -5,7 +5,6 @@ class Artwork(models.Model):
     artist = models.CharField(max_length=50, null=False, blank=False)
     length = models.PositiveIntegerField(db_column='length')
     width = models.PositiveIntegerField(db_column='widht')
-    depth = models.PositiveIntegerField()
     category = models.CharField(max_length=50, null=False, blank=False)
     medium = models.CharField(max_length=50, null=False, blank=False)
     price = models.PositiveIntegerField()
