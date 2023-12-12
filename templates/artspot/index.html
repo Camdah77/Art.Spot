@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art.Spot</title>
+</head>
+<body>
+    
+        <h1>Availible artworks</h1>
+        <table>
+            {% for artwork in artworks %}
+                <tr>
+                    <td><strike>{{ Artwork.name }}</strike></td>
+                    <td>{{ artwork.artist }}</td>
+                    <td>{{ artwork.category }}</td>
+                    <td>{{ artwork.price }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    
+    
+    
+     
+</body>
+</html>

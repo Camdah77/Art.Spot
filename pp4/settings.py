@@ -31,9 +31,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['8000-camdah77-artspot-p6z040aiprb.ws-eu106.gitpod.io',
-                'https://git.heroku.com/artspot.git',
-                'https://artspot-1537d6fa1517.herokuapp.com',
-                'artspot-1537d6fa1517.herokuapp.com']
+                    'git.heroku.com',
+                'artspot-1537d6fa1517.herokuapp.com',
+                'localhost']
 
 
 # Application definition
@@ -66,7 +66,7 @@ ROOT_URLCONF = 'pp4.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
