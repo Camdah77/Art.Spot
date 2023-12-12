@@ -1,11 +1,9 @@
 {
   "name": "art.spot",
   "version": "1.0.0",
-  "description": "![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)",
+  "description": "![Artspot Logotype](https://res.cloudinary.com/dj9sie6nl/image/upload/v1702379784/Artspot/artspot_logotype.png)",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Camdah77/Art.Spot.git"
