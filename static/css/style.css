@@ -6,14 +6,10 @@ body {
 
 .homenav  {
     height: 10vh;    
-    width: 100%;
+    width: 100%; 
  }
 
 /* LOGO  */
-.navbar-brand {
-    width : 200px;
-    height :100px; 
-    }
 
  .nav-link {
     font-family: 'Montserrat';

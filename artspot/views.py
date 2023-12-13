@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Artwork  
+from .models import Artwork, Post  , Comment
 from .forms import AddArtworkForm
 from django.http import HttpResponse
 from django.template import loader
+from django.views import generic
 
 # HTML- pages
 def landing_page(request):
@@ -75,3 +76,11 @@ def delete_artwork(request, artwork_id):
     artwork = get_object_or_404(Artwork, id=artwork_id)
     artwork.delete()
     return redirect('get_artwork')
+
+
+#BLOG
+class PostList(generic.ListView):
+    model = Post
+    queryset = Post.objects.filter(status=1).order_by("-created_on")
+    template_name = "/blogg/blog.html"
+    paginate_by = 6
