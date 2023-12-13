@@ -11,7 +11,7 @@
 <body>
     <img srcset="https://res.cloudinary.com/dj9sie6nl/image/upload/v1702379784/Artspot/artspot_logotype.png"
     alt="logtype">
-    <h1>Edit an artwork</h1>
+    <h3>Edit an artwork</h3>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
@@ -23,3 +23,4 @@
     </form>
 </body>
 </html>
+{% endblock %}

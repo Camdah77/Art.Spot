@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block content %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -9,9 +10,8 @@
     <title>Art.Spot</title>
 </head>
 <body>
-    <img srcset="https://res.cloudinary.com/dj9sie6nl/image/upload/v1702379784/Artspot/artspot_logotype.png"
-    alt="logtype">
-    <h1>Available artworks</h1>
+   
+    <h3>Available artworks</h3>
 
     <table>
         {% for artwork in artworks %}
@@ -36,3 +36,5 @@
     <a href="/add">Add an artwork</a>
 </body>
 </html>
+
+{% endblock %}

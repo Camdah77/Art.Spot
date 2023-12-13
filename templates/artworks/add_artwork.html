@@ -1,4 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
 {% load static %}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,9 +11,8 @@
     <title>Art.Spot</title>
 </head>
 <body>
-    <img srcset="https://res.cloudinary.com/dj9sie6nl/image/upload/v1702379784/Artspot/artspot_logotype.png"
-    alt="logtype">
-    <h1>Add an artwork</h1>
+ 
+    <h3>Add artwork</h3>
     <form method="POST" action="{% url 'add_artwork' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
@@ -22,3 +24,4 @@
     
 </body>
 </html>
+{% endblock %}
