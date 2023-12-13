@@ -1,5 +1,12 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
-    <!-- Your index page content goes here -->
+
+{% load static %}
+
+<!-- <div class="hero-page"></div> -->
+<div class="hero-page">
+    <img src="{% static 'images/hero-artspot.webp' %}" alt="Hero image. Livingroom with and artwork of an elephant.">
+</div>
+
 {% endblock %}
