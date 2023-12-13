@@ -4,13 +4,9 @@ body {
     font-family: 'Montserrat', sans-serif; 
 }
 
-.homenav  {
-    height: 10vh;    
-    width: 100%; 
+ .nav justify-content-end{
+    height: 15vh;  
  }
-
-/* LOGO  */
-
  .nav-link {
     font-family: 'Montserrat';
     font-size: 18px;
@@ -28,11 +24,16 @@ body {
     color: black;
 }
 
+.list-inline-item {
+    color: black;
+}
+
+
 /* INDEX.HTML */
 /* Heroimage */
 .hero {
     width: 100%;
-}
+   }
 
 
 .nav-bar:hover{
