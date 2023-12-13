@@ -2,116 +2,119 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<!-- Head including: Meta tags, CSS, JS & Title --> 
 <head>
     <meta charset="UTF-8">
+    <!-- Meta search keywords --> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/media/images/favicon.png" aria-label="favicon" alt="logotype Art.Spot">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/e48964c33a.js" crossorigin="anonymous"></script>
+    <meta name="keywords" content="Learn, share & grow together with other artists">
+    font-family: 'Titillium Web', sans-serif;
+    link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 
+    <!-- Favicon: Art.Spot --> 
+    <link rel="icon" type="image/png" href="/media/images/favicon.png" aria-label="Favicon with Logotype: Art.Spot" alt="Favicon with Logotype: Art.Spot">
+    <!-- CSS: Art.Spot --> 
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+   <!-- CSS: Bootstap --> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- CSS: Fotawsome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css"> 
+        <!-- JS: Bootstap --> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    <!-- Title --> 
     <title>Art.Spot</title>
 </head>
+
 <body>
+      
+<!-- Header with Logo & navbar -->    
+<header>
+    <!-- SITE LOGO & TAGLINE -->
+    <div class="logo-tagline">
+        <a href="{% url 'home' %}" class="logo-link">
+            <img src="https://res.cloudinary.com/dj9sie6nl/image/upload/v1702379784/Artspot/artspot_logotype.png" alt="Logotype Art.Spot"> 
+        </a>
+    </div>
+    
+    <!-- NAVBAR COLLAPSE: MOBILE VIEW -->
+    <div class="dropdown-center display-mobile menu-btn-container">
+        <button class="btn btn-secondary dropdown-toggle menu-btn" type="button" id="dropdownCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i> menu
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownCenterBtn">
+            <li>
+                <a href="{% url 'home' %}" class="nav-bar">Home</a>
+            </li>
+            <li>
+                <a href="{% url 'about' %}" class="nav-bar">About</a>
+            </li>
+            <li>
+                <a href="{% url 'blogg_blog' %}" class="nav-bar">Blog</a>
+            </li>
+
+            <li>
+                <a href="{% url 'events_upcoming' %}" class="nav-bar">Live-Event</a>
+            </li>
+            <li>
+                <a href="{% url 'artworks_artworks' %}" class="nav-bar">Marketplace</a>
+            </li>
+
+            {% if user.is_authenticated %}
+            <li>
+                <a class="nav-bar" href="{% url 'account_logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li>
+                <a class="nav-bar" href="{% url 'account_login' %}">Login / Sign up</a>
+            </li>
+            {% endif %}
+        </ul>
+      </div>
+                 
+ {% block content %}
+ <!-- Content Goes here -->
+{% endblock content %}
        
-   
-<!-- Just an image -->
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-      <img src="https://res.cloudinary.com/dj9sie6nl/image/upload/v1702379784/Artspot/artspot_logotype.png" width="404px" height="150" alt="Logotype Art.Spot">width: 404px;
-     
-      height: 122px;
-    </a>
-  </nav>
-<body class="d-flex h-100 text-center text-white">
-    <div class="logobtn cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <div class="d-flex justify-content-between align-items-center">
-            <h1><a class="logobtn orange-btn" style="display: flex;
-            align-items: start;
-            justify-content: start;" href="/"> </a></h1>
-            <header class="mb-auto end-0 top-0">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between rounded-5">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse position-relative" id="navbarNav">
-                        <ul class="navbar-nav">
-                            {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <div class="dropdown">
-                                    <button class="btn dropdown-toggle orange-btn" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Events
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item orange-btn" href="">List
-                                                of events</a></li>
-                                        <li><a class="dropdown-item orange-btn" href="">Joined
-                                                events</a></li>
-                                        <li><a class="dropdown-item orange-btn" href="">Create
-                                                event</a></li>
-                                    </ul>
-                                </div>
-                            <li class="nav-item">
-                                <a class="nav-link orange-btn" aria-current="page"
-                                    href="">Messages</a>
-                            </li>
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle orange-btn" type="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Marketplace
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item orange-btn" href="">Items for
-                                            sale</a></li>
-                                    <li><a class="dropdown-item orange-btn" href="">New item
-                                            for sale</a></li>
-                                    <li><a class="dropdown-item orange-btn" href="">Your
-                                            sale items</a></li>
-                                </ul>
-                            </div>
-                            <li class="nav-item">
-                                <a class="nav-link orange-btn" aria-current="page"
-                                    href="">Logout</a>
-                            </li>
-                            {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link orange-btn" aria-current="page"
-                                    href="">Register</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link orange-btn" href="">Login</a>
-                            </li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                </nav>
-            </header>
-        </div>
-        <div class="container d-flex flex-column justify-content-center">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-6 bg-dark rounded-5">
-                    <div style="display: flex; justify-content: center; align-items: center;">
-                        <main class="text-light">
-                
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 dark-bg">
+        <p class="m-0 text-center text-white">Made by Camilla Dahlström<br> </p>
+         <!--SOCIAL LINKS-->
+         <div class="row">
+            <div class="col social-icons">
+                <ul id="social" class="list-inline">
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/Camilla1977/" target="_blank" rel="noopener"
+                            aria-label="Visit our Facebook page (opens in a new tab)">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </li>
                    
-                            {% block content %}
-                            <!-- Content Goes here -->
-                            {% endblock content %}
-                        </main>
-                    </div>
-                </div>
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/camilladahlstromz" target="_blank" rel="noopener"
+                            aria-label="Visit our Instagram page (opens in a new tab)">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </li>
+                   
+                    <li class="list-inline-item">
+                        <a href="https://github.com/Camdah77" target="_blank" rel="noopener"
+                            aria-label="Visit my Github page (opens in a new tab)">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://www.linkedin.com/in/camilladah/" target="_blank"
+                            rel="noopener" aria-label="Visit my Linkedin page (opens in a new tab)">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-
-        <footer class="mt-auto text-white-50">
-            <p class="float-md-end">Made by Camilla Dahlström <a href="https://github.com/Camdah77"></a>
-                    class="text-white-50"><i class="fa-brands fa-github"></i></a> <a
-                    href="https://www.linkedin.com/in/camilladah/" class="text-white-50"><i
-                        class="fa-brands fa-linkedin"></i></a> </p>
-        </footer>
+    </footer>
     </div>
 
 </body>

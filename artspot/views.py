@@ -8,11 +8,14 @@ from django.template import loader
 def landing_page(request):
     return render(request, 'base.html')
 
+def home(request):
+    return render(request, 'index.html')  
+
 # List uploaded Artworks
 def get_artwork(request):
     artworks = Artwork.objects.all()
     context = {
-        'artworks': artworks  # Fix the variable name here
+        'artworks': artworks  
     }
 
     return render(request, 'artworks/artworks.html', context)
