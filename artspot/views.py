@@ -8,28 +8,20 @@ from django.views import generic
 # HTML- pages
 def landing_page(request):
     return render(request, 'base.html')
-
 def home(request):
     return render(request, 'index.html')  
-
 def blog(request):
     return render(request, 'blogg/blog.html')  
-
 def events(request):
     return render(request, 'events/upcoming.html')  
-
 def market(request):
     return render(request, 'artworks/artworks.html')   
-
 def about(request):
     return render(request, 'about/aboutartspot.html')  
-
 def login(request):
     return render(request, '/account/login.html')  
-
 def logout(request):
     return render(request, '/account/logout.html')  
-
 def signup(request):
     return render(request, 'account/signup.html')  
 
@@ -82,5 +74,5 @@ def delete_artwork(request, artwork_id):
 class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_on")
-    template_name = "/blogg/blog.html"
+    template_name = "blogg/blog.html"
     paginate_by = 6
