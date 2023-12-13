@@ -4,12 +4,33 @@ from .forms import AddArtworkForm
 from django.http import HttpResponse
 from django.template import loader
 
-
+# HTML- pages
 def landing_page(request):
     return render(request, 'base.html')
 
 def home(request):
     return render(request, 'index.html')  
+
+def blog(request):
+    return render(request, 'blogg/blog.html')  
+
+def events(request):
+    return render(request, 'events/upcoming.html')  
+
+def market(request):
+    return render(request, 'artworks/artworks.html')   
+
+def about(request):
+    return render(request, 'about/aboutartspot.html')  
+
+def login(request):
+    return render(request, '/account/login.html')  
+
+def logout(request):
+    return render(request, '/account/logout.html')  
+
+def signup(request):
+    return render(request, 'account/signup.html')  
 
 # List uploaded Artworks
 def get_artwork(request):

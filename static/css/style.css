@@ -1,16 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 
-
-
-
-
-header  {
-    height: 10vh;    width: 100%;
-    background-color: #CCCAC7;
+body {
+    font-family: 'Montserrat', sans-serif; 
 }
 
-/* SITE LOGO & TAG LINE */
-.logo-tagline {
-    width :"350px";
-    height :auto; 
+.homenav  {
+    height: 10vh;    
+    width: 100%;
+ }
+
+/* LOGO  */
+.navbar-brand {
+    width : 200px;
+    height :100px; 
     }
+
+ .nav-link {
+    font-family: 'Montserrat';
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+ }
+
+ .nav-bar:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.nav-bar:visited{
+    text-decoration: none;
+    color: black;
+}
+
+/* INDEX.HTML */
+/* Heroimage */
+.hero {
+    width: 100%;
+}
+
+
+.nav-bar:hover{
+    text-decoration: none;
+    color: #EFB542;
+}

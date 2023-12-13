@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     <!-- Favicon: Art.Spot --> 
-    <link rel="icon" type="image/png" href="/media/images/favicon.png" aria-label="Favicon with Logotype: Art.Spot" alt="Favicon with Logotype: Art.Spot">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static '/images/favicon.png' %}" />
     <!-- CSS: Art.Spot --> 
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
    <!-- CSS: Bootstap --> 
@@ -29,48 +29,46 @@
       
 <!-- Header with Logo & navbar -->    
 <header>
-    <!-- SITE LOGO & TAGLINE -->
-    <div class="logo-tagline">
-        <a href="{% url 'home' %}" class="logo-link">
-            <img src="https://res.cloudinary.com/dj9sie6nl/image/upload/v1702379784/Artspot/artspot_logotype.png" alt="Logotype Art.Spot"> 
-        </a>
-    </div>
+    
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'home' %}" >
+      <img src="{% static 'images/logotype_artspot.webp' %}" width="200px" height="100px" alt="Logotype Artspot">
+    </a>
+  </nav>
+    
     
     <!-- NAVBAR COLLAPSE: MOBILE VIEW -->
-    <div class="dropdown-center display-mobile menu-btn-container">
-        <button class="btn btn-secondary dropdown-toggle menu-btn" type="button" id="dropdownCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-bars"></i> menu
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownCenterBtn">
-            <li>
-                <a href="{% url 'home' %}" class="nav-bar">Home</a>
-            </li>
-            <li>
-                <a href="{% url 'about' %}" class="nav-bar">About</a>
-            </li>
-            <li>
-                <a href="{% url 'blogg_blog' %}" class="nav-bar">Blog</a>
-            </li>
-
-            <li>
-                <a href="{% url 'events_upcoming' %}" class="nav-bar">Live-Event</a>
-            </li>
-            <li>
-                <a href="{% url 'artworks_artworks' %}" class="nav-bar">Marketplace</a>
-            </li>
-
-            {% if user.is_authenticated %}
-            <li>
-                <a class="nav-bar" href="{% url 'account_logout' %}">Logout</a>
-            </li>
-            {% else %}
-            <li>
-                <a class="nav-bar" href="{% url 'account_login' %}">Login / Sign up</a>
-            </li>
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'home' %}" class="nav-bar">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'blog' %}" class="nav-bar">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'events' %}" class="nav-bar">Live-Event</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'market' %}" class="nav-bar">Marketplace</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}" class="nav-bar">About</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </li>
+          {% else %}
+          <li><li class="nav-item">
+            <a class="nav-bar" href="{% url 'login' %}">Login / Sign up</a>
+        </li>
             {% endif %}
-        </ul>
-      </div>
+      </ul>
+    </div>
+          
                  
+             
+                            
  {% block content %}
  <!-- Content Goes here -->
 {% endblock content %}
@@ -114,6 +112,6 @@
         </div>
     </footer>
     </div>
-    font-family 'Montserrat', sans-serif;
+    
 </body>
 </html>

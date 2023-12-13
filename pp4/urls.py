@@ -14,17 +14,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from artspot.views import landing_page, get_artwork, add_artwork, edit_artwork, delete_artwork
+from django.urls import path, include
+from artspot.views import (
+    landing_page, get_artwork, add_artwork, edit_artwork, delete_artwork,
+    home, about, blog, events, market, login , logout, signup
+)
 from django.conf import settings
 from django.conf.urls.static import static
-from artspot.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('', get_artwork, name='get_artwork' ),
-    path('add', add_artwork, name="add_artwork"),
-    path('edit/<artwork_id>', edit_artwork, name='edit'),
-    path('delete/<artwork_id>', delete_artwork, name='delete'),
+    path('get_artwork/', get_artwork, name='get_artwork' ),
+    path('add/', add_artwork, name="add_artwork"),
+    path('edit/<artwork_id>/', edit_artwork, name='edit'),
+    path('delete/<artwork_id>/', delete_artwork, name='delete'),
+    path('about/', about, name='about'),
+    path('blog/', blog, name='blog'),
+    path('events/', events, name='events'),
+    path('market/', market, name='market'),
+    path('login', login, name='login'),
+    path('logout', logout, name='logout'),
+    path('signup', signup, name='signup'),
 ]
