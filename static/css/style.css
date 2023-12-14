@@ -3,12 +3,17 @@
 body {
     font-family: 'Montserrat', sans-serif; 
 }
-h1, h3 {
+h1, {
     color: #545454;
     font-size: 18px;
     font-weight: bold;
 }
 
+h3 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+}
  .nav justify-content-end{
     height: 15vh;  
  }
@@ -46,6 +51,12 @@ h1, h3 {
 .nav-bar:hover{
     text-decoration: none;
     color: #EFB542;
+}
+
+
+.container-backgroundgrey {
+    width: 100%;
+    background-color: #545454;
 }
 
 /*Adjust them */

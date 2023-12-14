@@ -1,7 +1,34 @@
 from django import forms
 from .models import Artwork, Comment
 from django import forms
+from allauth.account.forms import SignupForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User 
 
+
+
+class CustomUserCreationForm(UserCreationForm):
+    username = forms.CharField(label='Artist name')
+    first_name = forms.CharField(max_length=30, label='First Name')
+    last_name = forms.CharField(max_length=30, label='Last Name')
+    email = forms.CharField(max_length=30, label='Email')
+    password1 = forms.CharField(max_length=30, label='Choose a password')  
+    password2 = forms.CharField(max_length=30, label='Type your password again please') 
+    
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
+
+    # Override the save method if needed
+    def save(self, request):
+        user = super(CustomSignupForm, self).save(request)
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
+        user.save()
+        return user
+
+
+# Marketplace
 class AddArtworkForm(forms.ModelForm):
     class Meta:
         model = Artwork

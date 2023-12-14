@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Artwork, Post, Comment
-from .forms import AddArtworkForm, CommentForm
+from .forms import AddArtworkForm, CommentForm, CustomUserCreationForm
 from django.http import HttpResponse
 from django.template import loader
 from django.views import generic, View
@@ -25,6 +25,13 @@ def logout(request):
     return render(request, '/account/logout.html')  
 def signup(request):
     return render(request, 'account/signup.html')  
+
+# Sign up
+def signup_view(request):
+    form = CustomUserCreationForm()
+    return render(request, 'account/signup.html', {'form': form})
+
+
 
 # List uploaded Artworks
 def get_artwork(request):

@@ -5,27 +5,73 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 mt-3 offset-md-2">
-      <h3>{% trans "Sign Up" %}</h3>
 
-      <p>{% blocktrans %}Welcome to Art.Spot Do you already have an account? Then please <a class="link"
-          href="{{ login_url }}">sign in</a> instead.{% endblocktrans %}</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8 mt-3 offset-md-2">
-      <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        {% if redirect_field_value %}
-        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-        {% endif %}
-        <button class="btn btn-signup right" type="submit">{% trans "Sign Up" %} &raquo;</button>
+<div class="container-backgroundgrey">
+  <p>{% blocktrans %}Already have an account? Then please <a class="text-light" href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+  <div class="container d-flex justify-content-center align-items-center">
+      <form method="post" class="login" id="signup_form" action="{% url 'account_signup' %}">
+          {{ form.non_field_errors | safe }}
+          {% csrf_token %}
+          <div class="row g-2">
+            <div class="form-floating form-group">
+              {{ form.username.label_tag }}
+              {{ form.username }}
+              <label for="{{form.id_username.id_for_label}}"></label>
+              {{ form.username.errors|safe }}
+          </div>
+          
+          <div class="form-floating form-group">
+              {{ form.first_name.label_tag }}
+              {{ form.first_name }}
+              <label for="{{form.id_firstname.id_for_label}}"></label>
+              {{ form.first_name.errors|safe }}
+          </div>
+          
+          <div class="form-floating form-group">
+              {{ form.last_name.label_tag }}
+              {{ form.last_name }}
+              <label for="{{form.id_lastname.id_for_label}}"></label>
+              {{ form.last_name.errors|safe }}
+          </div>
+          
+          <div class="form-floating form-group">
+              {{ form.email.label_tag }}
+              {{ form.email }}
+              <label for="{{form.id_email.id_for_label}}"></label>
+              {{ form.email.errors|safe }}
+          </div>
+          
+          <div class="form-floating form-group">
+              {{ form.password1.label_tag }}
+              {{ form.password1 }}
+              <label for="{{form.id_password1.id_for_label}}"></label>
+              {{ form.password1.errors|safe }}
+          </div>
+          
+          <div class="form-floating form-group">
+              {{ form.password2.label_tag }}
+              {{ form.password2 }}
+              <label for="{{form.id_password2.id_for_label}}"></label>
+              {{ form.password2.errors|safe }}
+          </div>
+                       <button class="btn signupbtn" type="submit"><i class="fa-solid fa-check"></i>  Sign up</button>
+              </div> 
+          </div>
       </form>
-    </div>
   </div>
-</div>
-
-{% endblock %}
+  {% if form.errors %}
+      {% for error in form.non_field_errors %}
+          <div class="error">
+              {{ error }}
+          </div>
+      {% endfor %}
+  {% endif %}
+  {% for message in messages %}
+  {% if message.tags %}
+  <div class="{{ message.tags }} message">
+  {% endif %}
+  {{ message }}
+  </div>
+  {% endfor %}
+  {% endblock content %}

@@ -92,7 +92,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'pp4.urls'
-
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
