@@ -13,15 +13,16 @@
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
-                                <img class="card-img-top" src="{% static 'path/to/placeholder/image.jpg' %}">
+                                <img class="card-img-top"
+                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
                                 {% else %}
-                                <img class="card-img-top" src="{{ post.featured_image.url }}">
+                                <img class="card-img-top" src=" {{ post.featured_image.url }}">
                                 {% endif %}
                                 <div class="image-flash">
                                     <p class="author">Author: {{ post.author }}</p>
                                 </div>
                             </div>
-                            <a href="#" class="post-link">
+                            <a href="{% url 'post_detail' post.slug  %}" class="post-link">
                                 <h2 class="card-title">{{ post.title }}</h2>
                                 <p class="card-text">{{ post.excerpt }}</p>
                             </a>
@@ -36,9 +37,22 @@
             <div class="row">
                 {% endif %}
                 {% endfor %}
+
             </div>
         </div>
     </div>
-</div>
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
 
-{% endblock %}
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{%endblock%}

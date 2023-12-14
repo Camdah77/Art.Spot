@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from artspot.views import (
     landing_page, get_artwork, add_artwork, edit_artwork, delete_artwork,
-    home, about, blog, events, market, login , logout, signup
+    home, about, blog, events, market, login , logout, signup, PostDetail
 )
+from artspot import views as pp4_views
+from artspot.views import PostList, PostDetail
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -30,11 +32,13 @@ urlpatterns = [
     path('edit/<artwork_id>/', edit_artwork, name='edit'),
     path('delete/<artwork_id>/', delete_artwork, name='delete'),
     path('about/', about, name='about'),
-    path('blog/', blog, name='blog'),
     path('events/', events, name='events'),
     path('market/', market, name='market'),
     path('login', login, name='login'),
     path('logout', logout, name='logout'),
     path('signup', signup, name='signup'),
     path('summernote/', include('django_summernote.urls')),
-    ]
+    path('blog/', PostList.as_view(), name='blog'),
+    path('<slug:slug>/', PostDetail.as_view(), name='post_detail'),
+    ] 
+   

@@ -1,5 +1,6 @@
 from django import forms
-from .models import Artwork
+from .models import Artwork, Comment
+from django import forms
 
 class AddArtworkForm(forms.ModelForm):
     class Meta:
@@ -19,3 +20,8 @@ class AddArtworkForm(forms.ModelForm):
             raise forms.ValidationError("Width must be a positive integer.")
         return width
 
+# Blog
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('body',)

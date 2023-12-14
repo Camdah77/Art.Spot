@@ -61,6 +61,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
@@ -77,6 +80,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+     'allauth.account.middleware.AccountMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
@@ -99,7 +103,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'pp4.wsgi.application'
-
+SITE_ID = 1
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

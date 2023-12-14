@@ -6,7 +6,9 @@ dj3-cloudinary-storage==0.0.6
 Django==3.2.23
 django-allauth==0.59.0
 django-crispy-forms==1.14.0
+django-rest-auth==0.9.5
 django-summernote==0.8.20.0
+djangorestframework==3.14.0
 gunicorn==21.2.0
 oauthlib==3.2.2
 Pillow==10.1.0
