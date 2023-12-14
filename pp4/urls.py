@@ -20,7 +20,7 @@ from artspot.views import (
     home, about, blog, events, market, login , logout, signup, PostDetail
 )
 from artspot import views as pp4_views
-from artspot.views import PostList, PostDetail
+from artspot.views import PostList, PostDetail, PostLike
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -40,5 +40,7 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('blog/', PostList.as_view(), name='blog'),
     path('<slug:slug>/', PostDetail.as_view(), name='post_detail'),
+    path('like/<slug:slug>/', PostLike.as_view(), name='post_like'),
+    path('accounts/', include('allauth.urls')),
     ] 
    

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Artwork, Post  , Comment
-from .forms import AddArtworkForm
+from .models import Artwork, Post, Comment
+from .forms import AddArtworkForm, CommentForm
 from django.http import HttpResponse
 from django.template import loader
 from django.views import generic, View
@@ -133,3 +133,13 @@ class PostDetail(DetailView):
                 "liked": liked
             },
         )
+class PostLike(View):
+    
+    def post(self, request, slug, *args, **kwargs):
+        post = get_object_or_404(Post, slug=slug)
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+
+        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
