@@ -17,7 +17,6 @@ class Artwork(models.Model):
 
 #Blog
 
-
 STATUS = ((0, "Draft"), (1, "Published"))
 
 
@@ -64,3 +63,11 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
+
+# User Profile
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE) # Delete profile when user is deleted
+    image = models.ImageField(default='default.jpg', upload_to='static/images/userimage')
+
+    def __str__(self):
+        return f'{self.user.username} Profile' #show how we want it to be displayed

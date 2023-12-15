@@ -17,12 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from artspot.views import (
     landing_page, get_artwork, add_artwork, edit_artwork, delete_artwork,
-    home, about, blog, events, market, login , logout, signup, PostDetail
+    home, about, blog, events, market, login , logout, signup, PostDetail, account_profile
 )
 from artspot import views as pp4_views
 from artspot.views import PostList, PostDetail, PostLike
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -42,5 +44,6 @@ urlpatterns = [
     path('<slug:slug>/', PostDetail.as_view(), name='post_detail'),
     path('like/<slug:slug>/', PostLike.as_view(), name='post_like'),
     path('accounts/', include('allauth.urls')),
+    path('profile/', account_profile, name='account_profile'),
     ] 
    

@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %} 
 
 {% load i18n %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-
+<div class="content-section">
 <div class="container-backgroundgrey">
   <p>{% blocktrans %}Already have an account? Then please <a class="text-light" href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 
@@ -64,7 +65,7 @@
       {% for error in form.non_field_errors %}
           <div class="error">
               {{ error }}
-          </div>
+          </div></div>
       {% endfor %}
   {% endif %}
   {% for message in messages %}

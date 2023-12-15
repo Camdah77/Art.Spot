@@ -2,11 +2,10 @@ from django import forms
 from .models import Artwork, Comment
 from django import forms
 from allauth.account.forms import SignupForm
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User 
 
-
-
+#SIGNUP
 class CustomUserCreationForm(UserCreationForm):
     username = forms.CharField(label='Artist name')
     first_name = forms.CharField(max_length=30, label='First Name')
@@ -52,3 +51,4 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('body',)
+

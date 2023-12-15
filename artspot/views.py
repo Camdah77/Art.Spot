@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Artwork, Post, Comment
-from .forms import AddArtworkForm, CommentForm, CustomUserCreationForm
+from .models import Artwork, Post, Comment, Profile
+from .forms import AddArtworkForm, CommentForm, CustomUserCreationForm 
 from django.http import HttpResponse
 from django.template import loader
 from django.views import generic, View
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # HTML- pages
 def landing_page(request):
@@ -25,15 +27,21 @@ def logout(request):
     return render(request, '/account/logout.html')  
 def signup(request):
     return render(request, 'account/signup.html')  
+def profile(request):
+    return render(request, 'account/profile.html')  
 
-# Sign up
+
+# Register /signup
 def signup_view(request):
     form = CustomUserCreationForm()
     return render(request, 'account/signup.html', {'form': form})
 
+@login_required # Require user logged in before they can access profile page
+def account_profile(request):
+    return render(request, 'account/profile.html')
 
 
-# List uploaded Artworks
+# MARKETPLACE 
 def get_artwork(request):
     artworks = Artwork.objects.all()
     context = {
@@ -77,16 +85,12 @@ def delete_artwork(request, artwork_id):
     artwork.delete()
     return redirect('get_artwork')
 
-
 #BLOG
 class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_on")
     template_name = 'blogg/blog.html'
     paginate_by = 6
-
-
-
 class PostDetail(DetailView):
     model = View
     template_name = 'blogg/post_detail.html'  

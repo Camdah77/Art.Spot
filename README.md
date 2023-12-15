@@ -64,6 +64,8 @@ Artspot is a community for artists who want to grow in their artistry. Here you 
 - CSS
 - Javascript
 ### Frameworks, Libraries & Programs Used:
+
+- https://www.devhandbook.com/django/user-profile/
   ## DEPLOYMENTS
   
 The site is created in Gitpod with a template from CodeInstitute.

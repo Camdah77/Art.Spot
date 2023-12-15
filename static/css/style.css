@@ -2,6 +2,9 @@
 
 body {
     font-family: 'Montserrat', sans-serif; 
+    margin: 0;
+    padding: 0;
+    padding-top: 80px;
 }
 h1 {
     color: #545454;
@@ -16,50 +19,47 @@ h3 {
 }
 /*base.html*/
 
-body {
-    margin: 0;
-    padding: 0;
-}
-
 header {
     display: flex;
-    width: 110%;
-    height: 80px; 
+    width: 100%; /* Set to 100% */
+    height: 80px;
     justify-content: space-between;
-    position: fixed;
     top: 0;
-    background-color: #fff; 
-    z-index: 1000; 
+    background-color: #fff;
+    z-index: 1000;
 }
 
 .navbar {
-    margin-right: 120px;
-    font: 'Montserrat', sans-serif;
+    margin-right: 20px; 
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
-    height: auto;
     color: #1A313C;
-    text-align: center;
     font-size: 18px;
+    font-weight: bold;
 }
 
 .navbar-brand img {
-    flex: 1; 
-    width: 250px;
-    height: auto;
+    width: 352px;
+    padding-bottom: 70px;
 }
 
-.username {
-    flex:3;
-    font-weight: bold;
-    color: #64A0A0;
-  }
+.list-inline-item {
+    width: 30px;
+}
+
 /* INDEX.HTML / Heropage */
+.herocontainer {
+    width: 95%;
+    height: 600px;
+    margin: 0 auto;
+    contain: content;
+}
+
 
 .heroimg {
-    height: auto;
+    width: 100%;
     position: relative;
-    margin-top: 153px;
-}
+    }
 
 .container-backgroundgrey {
     width: 100%;
