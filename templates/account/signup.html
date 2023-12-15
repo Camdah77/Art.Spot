@@ -7,11 +7,12 @@
 
 {% block content %}
 <div class="content-section">
-<div class="container-backgroundgrey">
-  <p>{% blocktrans %}Already have an account? Then please <a class="text-light" href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
-
+  <div class="container-backgroundgrey">
+    <p>{% blocktrans %}Already have an account? Then please{% endblocktrans %}
+       <a class="text-light" href="{% url 'login' %}">{% blocktrans %}sign in{% endblocktrans %}</a>.</p>
+    
   <div class="container d-flex justify-content-center align-items-center">
-      <form method="post" class="login" id="signup_form" action="{% url 'account_signup' %}">
+      <form method="post" class="login" id="signup_form" action="{% url 'signup' %}">
           {{ form.non_field_errors | safe }}
           {% csrf_token %}
           <div class="row g-2">

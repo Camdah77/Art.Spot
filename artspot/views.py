@@ -22,21 +22,22 @@ def market(request):
 def about(request):
     return render(request, 'about/aboutartspot.html')  
 def login(request):
-    return render(request, '/account/login.html')  
+    return render(request, 'account/login.html')
 def logout(request):
-    return render(request, '/account/logout.html')  
+    return render(request, 'account/logout.html')  
 def signup(request):
     return render(request, 'account/signup.html')  
-def profile(request):
+def account_profile(request):
     return render(request, 'account/profile.html')  
 
 
-# Register /signup
+
+#  Signup
 def signup_view(request):
     form = CustomUserCreationForm()
     return render(request, 'account/signup.html', {'form': form})
 
-@login_required # Require user logged in before they can access profile page
+@login_required
 def account_profile(request):
     return render(request, 'account/profile.html')
 
