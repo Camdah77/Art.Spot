@@ -5,6 +5,12 @@ from allauth.account.forms import SignupForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
+#LOGIN# authentication/forms.py
+
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=63)
+    password = forms.CharField(max_length=63, widget=forms.PasswordInput)
+
 #SIGNUP
 class CustomUserCreationForm(UserCreationForm):
     username = forms.CharField(label='Artist name')

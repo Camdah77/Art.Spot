@@ -38,8 +38,9 @@ header {
     font-weight: bold;
 }
 
+/*Logotype*/
 .navbar-brand img {
-    width: 352px;
+    width: 400px;
     padding-bottom: 70px;
 }
 
@@ -55,7 +56,6 @@ header {
     contain: content;
 }
 
-
 .heroimg {
     width: 100%;
     position: relative;
@@ -64,8 +64,29 @@ header {
 .container-backgroundgrey {
     width: 100%;
     background-color: #545454;
+    margin-top: 16vh;
+}
+.containerform {
+    width: 100%;
+    background-color: #545454;
+    margin-top: 16vh;
+
+}
+.container {
+    width: 100%;
+    margin-top: 16vh;
+
+}
+.form-group{
+    background-color: #445261;
+    color: #fff;
 }
 
+button.btn.btn-signup.right {
+    background-color: #445261;
+    color: #fff;
+    font-size: 16px;
+}
 /*Adjust them */
 .card {
     border: none;
@@ -144,16 +165,6 @@ header {
     color: lightgray;
 }
 
-.btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
-}
-
-.btn-signup:hover,
-.btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
-}
 
 .link {
     color: #23BBBB;
@@ -177,4 +188,22 @@ header {
     color: #E84610;
     background: transparent;
     border: none;
+}
+
+@media screen and (max-width: 600px)
+{
+/*Logotype*/
+.navbar-brand img {
+    width: 157px;
+    margin-top: -127px;
+}
+
+}
+@media screen and (max-width: 992px)
+{
+
+}
+@media screen and (max-width: 1200px)
+{
+    
 }
