@@ -16,54 +16,49 @@ h3 {
 }
 /*base.html*/
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
 header {
     display: flex;
-    width: 100%;
-    height: 38vh;
+    width: 110%;
+    height: 80px; 
     justify-content: space-between;
-    align-items: baseline;
-   }
-
-.logotype {
-    flex: 1; 
-    width: 350px;
-    height: auto;
+    position: fixed;
+    top: 0;
+    background-color: #fff; 
+    z-index: 1000; 
 }
 
-/* NAVIGATION BAR */
-#nav {
+.navbar {
+    margin-right: 120px;
+    font: 'Montserrat', sans-serif;
     text-align: center;
     height: auto;
-}
-
-.nav-bar {
     color: #1A313C;
     text-align: center;
-    font-family: 'Permanent Marker', cursive;
-    font-size: 1.5em;
-    padding: 5px 70px;
+    font-size: 18px;
 }
 
-.nav-bar:hover{
-    text-decoration: none;
-    color: #343638 ;
-}
-
-.display-mobile {
-    display: none;
+.navbar-brand img {
+    flex: 1; 
+    width: 250px;
+    height: auto;
 }
 
 .username {
+    flex:3;
     font-weight: bold;
     color: #64A0A0;
   }
 /* INDEX.HTML / Heropage */
 
 .heroimg {
-    width: 100%;
     height: auto;
     position: relative;
-    top: -500px;
+    margin-top: 153px;
 }
 
 .container-backgroundgrey {
