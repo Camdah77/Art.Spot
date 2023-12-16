@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,9 +72,12 @@
       </nav>
     </header>
 <body>
-{% block content %}   
-{% endblock %}
-</body>   
+    {% block content %}   
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+    {% endblock %}
+    </body>
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">

@@ -61,14 +61,26 @@ header {
     position: relative;
     }
 
+.newprofile input[type="text"],
+.newprofile input[type="email"],
+.newprofile input[type="password"] {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+ .newprofile {
+        max-width: 400px;  /* Adjust width as needed */
+        margin: auto;
+    }
+
 .container-backgroundgrey {
     width: 100%;
-    background-color: #545454;
+
     margin-top: 16vh;
 }
 .containerform {
     width: 100%;
-    background-color: #545454;
+
     margin-top: 16vh;
 
 }

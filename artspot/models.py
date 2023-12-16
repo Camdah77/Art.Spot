@@ -64,6 +64,12 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
 
+class Newprofile(models.Model):
+    username = models.CharField(max_length=80)
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
 # User Profile
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE) # Delete profile when user is deleted

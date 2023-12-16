@@ -1,13 +1,26 @@
 from django.contrib.auth import login, authenticate 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Artwork, Post, Comment, Profile
-from .forms import AddArtworkForm, CommentForm, CustomUserCreationForm, LoginForm
+from .forms import AddArtworkForm, CommentForm, CustomUserCreationForm, LoginForm, NewprofileForm
 from django.http import HttpResponse
 from django.template import loader
 from django.views import generic, View
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
+
+def newprofile(request):
+    if request.method == 'POST':
+        form = NewprofileForm(request.POST)
+        if form.is_valid():
+            # Process the form data if needed
+            pass
+    else:
+        form = NewprofileForm()
+
+    context = {'form': form}
+    return render(request, 'events/upcomingevent.html', context)
 
 # HTML- pages
 def landing_page(request):
@@ -31,6 +44,11 @@ def signup(request):
 def account_profile(request):
     return render(request, 'account/profile.html')  
 
+def signup(request):
+    form = NewprofileForm()
+    context = {'form:': form}
+    return render(request, 'events/upcoming.html', context )
+
 def login_page(request):
     form = forms.LoginForm()
     message = ''
@@ -50,15 +68,24 @@ def login_page(request):
         request, 'authentication/login.html', context={'form': form, 'message': message})
 
 
-#  Signup
-def signup_view(request):
-    form = CustomUserCreationForm()
-    return render(request, 'account/signup.html', {'form': form})
+def signup(request):
+    success_message = None
 
-@login_required
-def account_profile(request):
-    return render(request, 'account/profile.html')
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            success_message = 'Account created successfully!'
+            messages.success(request, success_message)
 
+            # Redirect the user to their profile page
+            return redirect('account_profile')
+        else:
+            messages.error(request, 'Error creating account. Please check the form.')
+    else:
+        form = CustomUserCreationForm()
+
+    return render(request, 'account/signup.html', {'form': form, 'success_message': success_message})
 
 # MARKETPLACE 
 def get_artwork(request):

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %} 
-
+{% load widget_tweaks %}
 {% load i18n %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
@@ -11,52 +11,57 @@
     <p>{% blocktrans %}Already have an account? Then please{% endblocktrans %}
        <a class="text-light" href="{% url 'login' %}">{% blocktrans %}sign in{% endblocktrans %}</a>.</p>
     
-  <div class="container d-flex justify-content-center align-items-center">
-      <form method="post" class="login" id="signup_form" action="{% url 'signup' %}">
+       {% if success_message %}
+       <div class="alert alert-success">
+           {{ success_message }}
+       </div>
+   {% endif %}
+   
+   <form method="post" class="login" id="signup_form" action="{% url 'signup' %}">
           {{ form.non_field_errors | safe }}
           {% csrf_token %}
           <div class="row g-2">
             <div class="form-floating form-group">
-              {{ form.username.label_tag }}
-              {{ form.username }}
-              <label for="{{form.id_username.id_for_label}}"></label>
-              {{ form.username.errors|safe }}
-          </div>
-          
-          <div class="form-floating form-group">
-              {{ form.first_name.label_tag }}
-              {{ form.first_name }}
-              <label for="{{form.id_firstname.id_for_label}}"></label>
-              {{ form.first_name.errors|safe }}
-          </div>
-          
-          <div class="form-floating form-group">
-              {{ form.last_name.label_tag }}
-              {{ form.last_name }}
-              <label for="{{form.id_lastname.id_for_label}}"></label>
-              {{ form.last_name.errors|safe }}
-          </div>
-          
-          <div class="form-floating form-group">
-              {{ form.email.label_tag }}
-              {{ form.email }}
-              <label for="{{form.id_email.id_for_label}}"></label>
-              {{ form.email.errors|safe }}
-          </div>
-          
-          <div class="form-floating form-group">
-              {{ form.password1.label_tag }}
-              {{ form.password1 }}
-              <label for="{{form.id_password1.id_for_label}}"></label>
-              {{ form.password1.errors|safe }}
-          </div>
-          
-          <div class="form-floating form-group">
-              {{ form.password2.label_tag }}
-              {{ form.password2 }}
-              <label for="{{form.id_password2.id_for_label}}"></label>
-              {{ form.password2.errors|safe }}
-          </div>
+                {{ form.username.label_tag }}
+                {{ form.username }}
+                <label for="{{ form.username.id_for_label }}"></label>
+                {{ form.username.errors|safe }}
+            </div>
+            
+            <div class="form-floating form-group">
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+                <label for="{{ form.first_name.id_for_label }}"></label>
+                {{ form.first_name.errors|safe }}
+            </div>
+            
+            <div class="form-floating form-group">
+                {{ form.last_name.label_tag }}
+                {{ form.last_name }}
+                <label for="{{ form.last_name.id_for_label }}"></label>
+                {{ form.last_name.errors|safe }}
+            </div>
+            
+            <div class="form-floating form-group">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                <label for="{{ form.email.id_for_label }}"></label>
+                {{ form.email.errors|safe }}
+            </div>
+            
+            <div class="form-floating form-group">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+                <label for="{{ form.password1.id_for_label }}"></label>
+                {{ form.password1.errors|safe }}
+            </div>
+            
+            <div class="form-floating form-group">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+                <label for="{{ form.password2.id_for_label }}"></label>
+                {{ form.password2.errors|safe }}
+            </div>
                        <button class="btn signupbtn" type="submit"><i class="fa-solid fa-check"></i>  Sign up</button>
               </div> 
           </div>

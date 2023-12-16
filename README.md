@@ -76,6 +76,9 @@ From the source section drop-down menu, select the Main Branch
 Once the main branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
   ## CREDITS  
 
+Form styleing
+https://pypi.org/project/django-widget-tweaks/
+How to Easily Style Your Django Form Fields With Django Widget Tweaks (https://www.youtube.com/watch?v=ynToND_xOAM)
 
 
 REMOVE BEFORE SUBMITTING
