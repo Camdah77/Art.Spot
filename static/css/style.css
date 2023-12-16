@@ -6,10 +6,24 @@ body {
     padding: 0;
     padding-top: 80px;
 }
-h1 {
-    color: #545454;
-    font-size: 18px;
-    font-weight: bold;
+
+header{
+    display: flex;
+    width: 100%;
+    height: 80px;
+    width: 100%;
+    z-index: 1000;
+    top: 0;
+}
+.h1join {
+    margin-top: 21vh;
+    display: flex;
+    align-content: center;
+    color: pink;
+    font-size: 30px;
+    text-shadow: 2px 2px #6d6a6a;
+    font-weight: bolder;
+    justify-content: center;
 }
 
 h3 {
@@ -19,21 +33,18 @@ h3 {
 }
 /*base.html*/
 
-header {
-    display: flex;
-    width: 100%; /* Set to 100% */
-    height: 80px;
-    justify-content: space-between;
-    top: 0;
-    background-color: #fff;
-    z-index: 1000;
-}
-
 .navbar {
     margin-right: 20px; 
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     color: #1A313C;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.navbar:active {
+    color:pink;
+    text-shadow: 2px 2px #6d6a6a;
     font-size: 18px;
     font-weight: bold;
 }
@@ -60,6 +71,26 @@ header {
     width: 100%;
     position: relative;
     }
+
+.form-group {
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+    font-size: 12px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-color: #adb5bd;
+}
+
+.memberbtn{
+    background-color: pink;
+    font-size: 14px;
+}
+
+span.helptext {
+    font-style: italic;
+    font-size: 10px;
+}
 
 .newprofile input[type="text"],
 .newprofile input[type="email"],
@@ -89,10 +120,7 @@ header {
     margin-top: 16vh;
 
 }
-.form-group{
-    background-color: #445261;
-    color: #fff;
-}
+
 
 button.btn.btn-signup.right {
     background-color: #445261;

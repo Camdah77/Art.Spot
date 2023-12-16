@@ -59,8 +59,9 @@ INSTALLED_APPS = [
     'cloudinary',
     'django_summernote',
     'crispy_forms',  
-     'widget_tweaks',
+    'widget_tweaks',
     'artspot',
+    'members',
    ]
 
 LOGIN_REDIRECT_URL = '/'

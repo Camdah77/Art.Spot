@@ -38,7 +38,16 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'home' %}">Home</a>
             </li>
+        
             <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About</a>
+            </li>
+      
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_profile' %}">Profile</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="{% url 'events' %}">Live-Events</a>
             </li>
             <li class="nav-item">
@@ -47,25 +56,16 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'blog' %}">Blog</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
-            </li>
-         
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_profile' %}">Profile</a>
-              </li>
-
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Logout</a>
               </li>
             {% else %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Join ArtSpot!</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}"> LogIn </a>
+            </li>       
             {% endif %}
           </ul>
         </div>

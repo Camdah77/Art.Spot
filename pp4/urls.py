@@ -26,6 +26,7 @@ from artspot.views import PostList, PostDetail, PostLike
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from members.views import UserRegisterView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,11 +40,13 @@ urlpatterns = [
     path('market/', market, name='market'),
     path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
-    path('signup/', signup, name='signup'),
     path('summernote/', include('django_summernote.urls')),
     path('profile/', account_profile, name='account_profile'),
     path('blog/', pp4_views.PostList.as_view(), name='blog'),
-    path('<slug:slug>/', pp4_views.PostDetail.as_view(), name='post_detail')
+    path('<slug:slug>/', pp4_views.PostDetail.as_view(), name='post_detail'),
+    path('members/', include('django.contrib.auth.urls')),
+    path('members/', include('members.urls')),
+
 ]
 
 if settings.DEBUG:

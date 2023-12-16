@@ -78,8 +78,10 @@ Once the main branch has been selected, the page will be automatically refreshed
 
 Form styleing
 https://pypi.org/project/django-widget-tweaks/
-How to Easily Style Your Django Form Fields With Django Widget Tweaks (https://www.youtube.com/watch?v=ynToND_xOAM)
 
+Codemy.com 
+Youtube videos login/member sites
+https://www.youtube.com/watch?v=uTxnxS0CZ-M&list=PLCC34OHNcOtr025c1kHSPrnP18YPB-NFi&index=10
 
 REMOVE BEFORE SUBMITTING
 `python3 -m http.server`
