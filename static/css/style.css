@@ -11,7 +11,7 @@ body {
 }
 
 h1{
-    font-family:Dancing Script;
+    font-family:'Dancing Script';
     margin-top:  15vh;
     display: flex;
     align-content: center;
@@ -19,6 +19,25 @@ h1{
     font-size: 60px;
     font-weight: bolder;
     justify-content: center;
+}
+h2 {
+    padding-bottom: 30px ;
+    font-family:'Dancing Script';
+    color: black;
+    font-size: 14px;
+    font-weight:bold;
+    margin-right: 200px;
+    margin-left: 80px;
+    
+}
+h3 {
+    font-family:'Montserrat';
+    color: #545454;
+    font-size: 12px;
+    font-style: italic;
+    margin-right: 200px;
+    margin-left: 80px;
+   
 }
 
 /*Base.html: Header*/
@@ -52,7 +71,7 @@ header{
 /*Index.html:Logotype*/
 .heroimg {
     width: 100%;
-
+}
 /*Register.html:Logotype*/
 .form-group {
     padding-top: 15vh;
@@ -75,43 +94,51 @@ span.helptext {
 }
 
 /*Aboutartspot.html*/
- .carousel-container {
-    background-color: rgb(84, 84, 84, 0.8); 
-    text-align: center;
-        }
-
-.carousel-img {
-            width: 50%; /* Set the width of the image */
-            margin: 0 auto; /* Center the image within its container */
-            display: block; /* Ensure the image is a block-level element */
-            opacity: 0; /* Set initial opacity to 0 for the fade-in effect */
-            transition: opacity 0.8s ease; /* Add a smooth transition for opacity */
-        }
-
-.carousel-inner {
-            position: relative;
-        }
-
-.carousel-inner .active {
-            opacity: 1; /* Set opacity to 1 for the active (visible) image */
-        }        
-
-.carousel-control-prev, .carousel-control-next {
-            background-color: #545454; /* Set your desired color for controls */
-        }
-
-.carousel-control-prev-icon, .carousel-control-next-icon {
-            filter: invert(100%); /* Invert the color of the control icons */
-        }
-
- .carousel-control-prev:hover, .carousel-control-next:hover {
-            background-color: #545454; /* Set hover color for controls */
-        }
-        .containerform {
-    width: 100%;
-    margin-top: 16vh;
+.container-fluid{
+    padding-top: 10vh;
+    background-color: pink;
+    padding-bottom: 10vh;
+}
+.col image {
+    width: 50%;
 
 }
+.collapsible {
+    background-color: #545454;
+    color: white;
+    cursor: pointer;
+    padding-block-end: 18px;
+    width: 100%;
+    height: 100px;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  .active, .collapsible:hover {
+    background-color: #414853;
+  }
+  
+  .collapsible:after {
+    content: '\002B';
+    color: #414853;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+  }
+  
+  .active:after {
+    content: "\2212";
+  }
+  
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
 button.btn.btn-signup.right {
     background-color: #445261;
     color: #fff;
@@ -140,6 +167,11 @@ button.btn.btn-signup.right {
     text-transform: uppercase;
 }
 
+.containerform {
+    width: 100%;
+    margin-top: 16vh;
+
+}
 .masthead {
     margin-top: 10px;
     overflow: hidden;
@@ -219,15 +251,31 @@ button.btn.btn-signup.right {
     border: none;
 }
 
-@media screen and (max-width: 600px)
-{
+@media screen and (max-width: 600px){
+
 /*Logotype*/
 .navbar-brand img {
     width: 157px;
     margin-top: -127px;
 }
+.text-box {
+    width: 100%; 
+}
+h2 {
+    font-family:'Montserrat';
+    color: black;
+    font-size: 12px;
+    font-weight:bold;    
+}
+
+h3 {
+    font-family:'Montserrat';
+    font-size: 12px;
+    font-style: italic;
+   }
 
 }
+
 @media screen and (max-width: 992px)
 {
 

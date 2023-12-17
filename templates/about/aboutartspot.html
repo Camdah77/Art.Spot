@@ -5,36 +5,89 @@
 
 <h1>This is Art.Spot</h1>
 
-
-<div class="container-fluid carousel-container">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      
-    </div><div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="{% static 'images/Art.spot1.webp' %}"  class="d-block w-100 carousel-img" alt="Grow as an artist">
+<div class="container-fluid">
+    <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <h1>John Doe</h1>
+            <p>Architect & Engineer</p>
+            <p>We love that guy</p>
+          </div>
+        </div>
       </div>
-      <div class="carousel-item">
-        <img src="{% static 'images/Art.spot2.webp' %}" class="d-block w-100 carousel-img"  alt="Together with others" >
-      </div>
-      <div class="carousel-item">
-        <img src="{% static 'images/Art.spot3.webp' %}"  class="d-block w-100 carousel-img"  alt="Learn from others" >
-      </div>
-      <div class="carousel-item">
-        <img src="{% static 'images/Art.spot4.webp' %}"  class="d-block w-100 carousel-img"  alt="share your experience">
-      </div>
-      <div class="carousel-item">
-        <img src="{% static 'images/Art.spot.webp' %}"  class="d-block w-100 carousel-img"  alt="Sell more art" >
-      </div>
+    <!-- Row 1 -->
+    <div class="row">
+        <div class="col image">
+            <img src="{% static 'images/Art.spot1.webp' %}" alt="Grow as an artist">
+        </div>
+        <div class="col"><button class="collapsible"><h2>You are not alone!</h2></button>
+                <div class="content">
+                    <p>"It's easy to feel isolated as an artist , spending numerous hours alone in your studio. 
+                That's why Art.Spot is here for you; we exclusively focus on artists like yourself."</p>
+        </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+
+    <!-- Row 2 -->
+    <div class="row image-row">
+        <div class="col image-container">
+            <img src="{% static 'images/Art.spot2.webp' %}" alt="Together with others">
+        </div>
+        <div class="col text-box"><button class="collapsible"><h2>
+           Shared happiness = double joy</h2></button>
+           <div class="content">
+                <p>"In our blog, all members can share daily happenings, whether they are big or small. 
+                    You don't need to be a professional artist—maybe you are just starting your 
+                    hobby—so feel free to share. It's more fun together!"</p>
+         </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="row image-row">
+        <div class="col image-container">
+            <img src="{% static 'images/Art.spot3.webp' %}" alt="Learn from others">
+        </div>
+        <div class="col text-box"><button class="collapsible">
+        <h2>Live-events</h2></button>
+            <div class="content">
+                <p>"Every week, we organize a live event that can cover anything from selling more 
+                    paintings and marketing yourself on social media to painting along with well-known artists!"</p>
+
+        </div>
+    </div>
+
+    <!-- Row 4 -->
+    <div class="row image-row">
+        <div class="col image-container">
+            <img src="{% static 'images/Art.spot4.webp' %}" alt="Share your experience">
+        </div>
+        <div class="col text-box"><button class="collapsible">
+            <h2>  Our simple philosophy!<h2></h2></button>
+            <div class="content">
+            <p> "By sharing our experiences and learning from others, 
+                you'll not only grow as a person and an artist but also increase your art sales!"</p>
+
+        </div>
+    </div>
+</div>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
 
         
 </div>
