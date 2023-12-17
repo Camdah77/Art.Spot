@@ -1,17 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art.Spot</title>
-</head>
-<body>
-    <img srcset="https://res.cloudinary.com/dj9sie6nl/image/upload/v1702379784/Artspot/artspot_logotype.png"
-    alt="logtype">
-    <h3>Edit an artwork</h3>
+
+    <h1>Edit your produt</h1>
+
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}

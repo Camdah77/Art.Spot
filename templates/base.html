@@ -11,12 +11,13 @@
     <meta name="keywords" content="Learn, share & grow together with other artists">
     <meta name="author" content="Camilla Dahlström">
     <!-- Google fonts --> 
+    <lin<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     <!-- Favicon: Art.Spot --> 
     <link rel="shortcut icon" type="image/x-icon" href="{% static '/images/favicon.png' %}" />
-    <!-- CSS: Art.Spot --> 
+    <!-- CSS/JS: Art.Spot --> 
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script src="../static/js/js.js"></script>
      <!-- JS: Bootstap --> 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
@@ -33,55 +34,49 @@
         <a class="navbar-brand" href="{% url 'home' %}">
             <img src="{% static 'images/logotype_artspot.webp' %}" alt="Logotype Artspot" class="logotype">
         </a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
-            </li>
         
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
-            </li>
-      
+          <ul class="navbar-nav ml-auto">
+                <div class="d-flex flex-row bd-highlight">
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_profile' %}">Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'events' %}">Live-Events</a>
+                <a class="nav-link" href="{% url 'blog' %}">Inspiration</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'events' %}">Events</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'market' %}">ArtMarket</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'blog' %}">Blog</a>
-            </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">LogOut</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link colored-link" href="{% url 'account_profile' %}">{{ user.username }}</a>
+                </li>
             {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}">Join ArtSpot!</a>
+                <a class="nav-link" href="{% url 'register' %}"> SignUp</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}"> LogIn </a>
             </li>       
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">Art.Spot</a>
+            </li>
             {% endif %}
           </ul>
         </div>
       </nav>
     </header>
-<body>
-    {% block content %}   
-    {% for message in messages %}
-        {{ message }}
-    {% endfor %}
+</br>
+   {% block content %}   
     {% endblock %}
-    </body>
-
+</container>
+</div>
+</body>
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
-        <p class="m-0 text-center text-black">Made by Camilla Dahlström | 
+        <p class="m-0 text-center text-black">Made by Camilla Dahlström | Student project at <a href="https://codeinstitute.net/se/" target="_blank" rel="noopener" aria-label="Visit Code Institute">Code Institute</a><br>
          <!--SOCIAL LINKS-->
          <div class="row">
             <div class="col social-icons">
@@ -119,5 +114,5 @@
     </div>
     
     <!-- CSS: Fotawsome --> 
-  <script src="https://kit.fontawesome.com/e48964c33a.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/e48964c33a.js" crossorigin="anonymous"></script></script>
 </html>

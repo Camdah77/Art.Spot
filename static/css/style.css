@@ -1,38 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 
+
+/*All sites*/
 body {
-    font-family: 'Montserrat', sans-serif; 
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     padding-top: 80px;
 }
 
+h1{
+    font-family:Dancing Script;
+    margin-top:  15vh;
+    display: flex;
+    align-content: center;
+    color: #545454;
+    font-size: 60px;
+    font-weight: bolder;
+    justify-content: center;
+}
+
+/*Base.html: Header*/
 header{
     display: flex;
+    justify-content: space-between;
+    flex-direction: row;
     width: 100%;
     height: 80px;
     width: 100%;
     z-index: 1000;
     top: 0;
 }
-.h1join {
-    margin-top: 21vh;
-    display: flex;
-    align-content: center;
-    color: pink;
-    font-size: 30px;
-    text-shadow: 2px 2px #6d6a6a;
-    font-weight: bolder;
-    justify-content: center;
-}
 
-h3 {
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
+/*Base.html:Logotype*/
+.navbar-brand img {
+    justify-content: flex-start;
+    width: 300px;
+    padding-bottom: 30px;
 }
-/*base.html*/
-
+/*Base.html:Logotype*/
 .navbar {
     margin-right: 20px; 
     font-family: 'Montserrat', sans-serif;
@@ -40,38 +47,13 @@ h3 {
     color: #1A313C;
     font-size: 18px;
     font-weight: bold;
+    justify-content: flex-end;
 }
-
-.navbar:active {
-    color:pink;
-    text-shadow: 2px 2px #6d6a6a;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-/*Logotype*/
-.navbar-brand img {
-    width: 400px;
-    padding-bottom: 70px;
-}
-
-.list-inline-item {
-    width: 30px;
-}
-
-/* INDEX.HTML / Heropage */
-.herocontainer {
-    width: 95%;
-    height: 600px;
-    margin: 0 auto;
-    contain: content;
-}
-
+/*Index.html:Logotype*/
 .heroimg {
     width: 100%;
-    position: relative;
-    }
 
+/*Register.html:Logotype*/
 .form-group {
     padding-top: 15vh;
     padding-bottom: 15vh;
@@ -79,7 +61,7 @@ h3 {
     display: flex;
     align-content: center;
     justify-content: center;
-    background-color: #adb5bd;
+    background-color: #545454;
 }
 
 .memberbtn{
@@ -92,42 +74,49 @@ span.helptext {
     font-size: 10px;
 }
 
-.newprofile input[type="text"],
-.newprofile input[type="email"],
-.newprofile input[type="password"] {
-        width: 100%;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-    }
- .newprofile {
-        max-width: 400px;  /* Adjust width as needed */
-        margin: auto;
-    }
+/*Aboutartspot.html*/
+ .carousel-container {
+    background-color: rgb(84, 84, 84, 0.8); 
+    text-align: center;
+        }
 
-.container-backgroundgrey {
+.carousel-img {
+            width: 50%; /* Set the width of the image */
+            margin: 0 auto; /* Center the image within its container */
+            display: block; /* Ensure the image is a block-level element */
+            opacity: 0; /* Set initial opacity to 0 for the fade-in effect */
+            transition: opacity 0.8s ease; /* Add a smooth transition for opacity */
+        }
+
+.carousel-inner {
+            position: relative;
+        }
+
+.carousel-inner .active {
+            opacity: 1; /* Set opacity to 1 for the active (visible) image */
+        }        
+
+.carousel-control-prev, .carousel-control-next {
+            background-color: #545454; /* Set your desired color for controls */
+        }
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+            filter: invert(100%); /* Invert the color of the control icons */
+        }
+
+ .carousel-control-prev:hover, .carousel-control-next:hover {
+            background-color: #545454; /* Set hover color for controls */
+        }
+        .containerform {
     width: 100%;
-
-    margin-top: 16vh;
-}
-.containerform {
-    width: 100%;
-
     margin-top: 16vh;
 
 }
-.container {
-    width: 100%;
-    margin-top: 16vh;
-
-}
-
-
 button.btn.btn-signup.right {
     background-color: #445261;
     color: #fff;
     font-size: 16px;
 }
-/*Adjust them */
 .card {
     border: none;
     background-color: transparent;

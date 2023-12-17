@@ -1,26 +1,14 @@
 from django.contrib.auth import login, authenticate 
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Artwork, Post, Comment, Profile
-from .forms import AddArtworkForm, CommentForm, CustomUserCreationForm, LoginForm, NewprofileForm
 from django.http import HttpResponse
 from django.template import loader
+from django.urls import reverse
 from django.views import generic, View
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
-
-def newprofile(request):
-    if request.method == 'POST':
-        form = NewprofileForm(request.POST)
-        if form.is_valid():
-            # Process the form data if needed
-            pass
-    else:
-        form = NewprofileForm()
-
-    context = {'form': form}
-    return render(request, 'events/upcomingevent.html', context)
+from .models import Artwork, Post, Comment
+from .forms import AddArtworkForm, CommentForm
 
 # HTML- pages
 def landing_page(request):
@@ -44,48 +32,6 @@ def signup(request):
 def account_profile(request):
     return render(request, 'account/profile.html')  
 
-def signup(request):
-    form = NewprofileForm()
-    context = {'form:': form}
-    return render(request, 'events/upcoming.html', context )
-
-def login_page(request):
-    form = forms.LoginForm()
-    message = ''
-    if request.method == 'POST':
-        form = forms.LoginForm(request.POST)
-        if form.is_valid():
-            user = authenticate(
-                username=form.cleaned_data['username'],
-                password=form.cleaned_data['password'],
-            )
-            if user is not None:
-                login(request, user)
-                message = f'Hello {user.username}! You have been logged in'
-            else:
-                message = 'Login failed!'
-    return render(
-        request, 'authentication/login.html', context={'form': form, 'message': message})
-
-
-def signup(request):
-    success_message = None
-
-    if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            success_message = 'Account created successfully!'
-            messages.success(request, success_message)
-
-            # Redirect the user to their profile page
-            return redirect('account_profile')
-        else:
-            messages.error(request, 'Error creating account. Please check the form.')
-    else:
-        form = CustomUserCreationForm()
-
-    return render(request, 'account/signup.html', {'form': form, 'success_message': success_message})
 
 # MARKETPLACE 
 def get_artwork(request):
@@ -132,14 +78,16 @@ def delete_artwork(request, artwork_id):
     return redirect('get_artwork')
 
 #BLOG
+
 class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_on")
-    template_name = 'blogg/blog.html'
+    template_name = "blogg/blog.html"
     paginate_by = 6
-class PostDetail(DetailView):
-    model = View
-    template_name = 'blogg/post_detail.html'  
+
+
+class PostDetail(View):
+
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
@@ -190,6 +138,8 @@ class PostDetail(DetailView):
                 "liked": liked
             },
         )
+
+
 class PostLike(View):
     
     def post(self, request, slug, *args, **kwargs):
@@ -199,4 +149,4 @@ class PostLike(View):
         else:
             post.likes.add(request.user)
 
-        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        return HttpResponseRedirect(reverse('blogg/post_detail.html', args=[slug]))

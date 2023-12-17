@@ -2,22 +2,13 @@
 {% block content %}
 {% load static %}
 
+<h1>Add a product to martketplace</h1>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art.Spot</title>
-</head>
-<body>
- 
-    <h3>Add artwork</h3>
     <form method="POST" action="{% url 'add_artwork' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <div>
-            <button type="submit">Show the world!</button>
+            <button type="submit" class="btn btn-secondary">Show the world!</button>
         </div>
     </form>
     

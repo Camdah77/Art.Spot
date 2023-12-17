@@ -1,53 +1,9 @@
 from django import forms
-from .models import Artwork, Comment, Newprofile
+from .models import Artwork, Comment
 from django.forms import ModelForm
 from django import forms
-from allauth.account.forms import SignupForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-
-#LOGIN# authentication/forms.py
-
-class LoginForm(forms.Form):
-    username = forms.CharField(max_length=63)
-    password = forms.CharField(max_length=63, widget=forms.PasswordInput)
-
-class NewprofileForm(forms.ModelForm):
-    class Meta:
-        model = Newprofile
-        fields = ['username', 'name', 'email']
-
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.username = self.cleaned_data['username']
-        user.name = self.cleaned_data['name']
-        user.email = self.cleaned_data['email']
-        if commit:
-            user.save()
-        return user
-
-
-class CustomUserCreationForm(UserCreationForm):
-    username = forms.CharField(label='Artist name')
-    first_name = forms.CharField(max_length=30, label='First Name')
-    last_name = forms.CharField(max_length=30, label='Last Name')
-    email = forms.EmailField(label='Email')  # Change this to EmailField
-    password1 = forms.CharField(max_length=30, label='Choose a password')  
-    password2 = forms.CharField(max_length=30, label='Type your password again please') 
-    
-    class Meta:
-        model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
-
-    # Override the save method if needed
-    def save(self, commit=True):
-        user = super(CustomUserCreationForm, self).save(commit=False)
-        user.first_name = self.cleaned_data['first_name']
-        user.last_name = self.cleaned_data['last_name']
-        user.email = self.cleaned_data['email']
-        if commit:
-            user.save()
-        return user
 
 
 # Marketplace

@@ -3,14 +3,14 @@
 {% block title %}Register{% endblock %}
 {% block content %}
 <p>
-<h1 class="h1join"> Join our creative world!</h1>
-<br>
+  <h1> Join today!</h1>
+  <br>
 </p>
 <div class="form-group">
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <button class="memberbtn">Create my profile!</button>
+        <button type="button" class="btn btn-secondary">Create my profile!</button>
     </form>
   </container>
 </div>

@@ -2,16 +2,9 @@
 {% block content %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art.Spot</title>
-</head>
-<body>
-   
-    <h3>Available artworks</h3>
+
+<h1> Marketplace</h1>
+
 
     <table>
         {% for artwork in artworks %}
@@ -23,17 +16,17 @@
 
                 <td>
                     <a href="/edit/{{ artwork.id }}">
-                        <button>Edit</button>
+                        <button type="button" class="btn btn-secondary">Edit</button>
                     </a>
                 <td>
                     <a href="/delete/{{ artwork.id }}">
-                        <button>Delete</button>
+                        <button type="button" class="btn btn-secondary">Edit</button>
                     </a>
                     </td>
             </tr>
         {% endfor %}
     </table>
-    <a href="/add">Add an artwork</a>
+    <a href="/add">Add a product to the marketplace</a>
 </body>
 </html>
 

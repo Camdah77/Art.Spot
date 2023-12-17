@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.text import slugify
+from django.utils import timezone
+timezone.now()
 
 #Marketplace
 class Artwork(models.Model):
@@ -18,8 +20,6 @@ class Artwork(models.Model):
 #Blog
 
 STATUS = ((0, "Draft"), (1, "Published"))
-
-
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
@@ -43,11 +43,7 @@ class Post(models.Model):
 
     def number_of_likes(self):
         return self.likes.count()
-    
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE,
@@ -64,16 +60,3 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
 
-class Newprofile(models.Model):
-    username = models.CharField(max_length=80)
-    name = models.CharField(max_length=80)
-    email = models.EmailField()
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-# User Profile
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE) # Delete profile when user is deleted
-    image = models.ImageField(default='default.jpg', upload_to='static/images/userimage')
-
-    def __str__(self):
-        return f'{self.user.username} Profile' #show how we want it to be displayed

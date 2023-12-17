@@ -2,20 +2,8 @@
 {% block content %}
 {% load static %}
 
-<div class="container-backgroundgrey">
-    <h3>Upcoming events</h3>
+<container class="contentcontainer">
+<h1> Live-Events </h1>
 
-    <body class="text-center">
-        <form class="newprofile" method="post">
-            {% csrf_token %}
-
-            JOIN NOW!
-
-            {{ form.as_p }}
-
-            <button style="background-color: #d63384;" class="btn btn-lg btn-block mt-5" type="submit">Join!</button>
-           </button>
-        </form>
-    </body>
-</div>
+</container>
 {% endblock %}

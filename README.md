@@ -41,7 +41,8 @@ Artspot is a community for artists who want to grow in their artistry. Here you 
   ### New User Goals:
   ## DESIGN 
   ### Wireframes:
-  ![ArtSpot wireframe](static/images/readme/wireframe.jpg)
+  ![ArtSpot wireframe not logged in](static/images/readme/Wireframe not logged.jpg)
+  ![ArtSpot wireframe Logged in](static/images/readme/Wireframe logged in.jpg)
    ### Colour Scheme:
  ![Colors]ADD:IMG
   ### Typography:
