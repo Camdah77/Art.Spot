@@ -18,7 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from artspot.views import (
-    landing_page, get_artwork, add_artwork, edit_artwork, delete_artwork,
+    landing_page, add_artwork, edit_artwork, delete_artwork,
     home, about, blog, events, market, login, logout, signup, PostList, PostDetail, PostLike, account_profile
 )
 from artspot import views as pp4_views
@@ -30,7 +30,6 @@ from members.views import UserRegisterView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),  # This is for the empty path
-    path('get_artwork/', pp4_views.get_artwork, name='get_artwork'),
     path('add/', pp4_views.add_artwork, name='add_artwork'),
     path('edit/<artwork_id>/', pp4_views.edit_artwork, name='edit'),
     path('delete/<artwork_id>/', pp4_views.delete_artwork, name='delete'),

@@ -25,6 +25,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = "categories"
+
 #Marketplace: Type of Artwork
 class Medium(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False)
@@ -53,7 +56,7 @@ class Product(models.Model):
         description = models.CharField(max_length=250, default='', null=True, blank=True)
         price_amount = models.DecimalField(default=0, decimal_places=2, max_digits=5)
         price_currency = models.CharField(default='EUR', max_length=3)
-        image = models.ImageField(upload_to='images/userimage/')
+        image = models.ImageField(upload_to='product_images')
         def __str__(self):
             return self.name
 

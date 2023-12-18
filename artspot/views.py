@@ -7,7 +7,7 @@ from django.views import generic, View
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Artwork, Post, Comment
+from .models import Artwork, Post, Comment, Product
 from .forms import AddArtworkForm, CommentForm
 
 # HTML- pages
@@ -34,13 +34,9 @@ def account_profile(request):
 
 
 # MARKETPLACE 
-def get_artwork(request):
-    artworks = Artwork.objects.all()
-    context = {
-        'artworks': artworks  
-    }
-
-    return render(request, 'artworks/artworks.html', context)
+def onsale(request):
+    products = Product.objects.all()
+    return render(request, 'artworks/artworks.html', {'products':products})
 
 # Add artworks
 def add_artwork(request):
