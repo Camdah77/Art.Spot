@@ -50,9 +50,6 @@ h3 {
     display: flexbox;
 }
 
-row {
- bs-gutter-x: 0rem; 
-}
 
   /* This container is needed to position the front and back side */
   .flip-card-inner {

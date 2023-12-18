@@ -14,10 +14,8 @@ STATICFILES_DIRS = [
 ]
 
 # Media directory
-MEDIA_URL = '/static/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/')
-MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Cloudinary directory
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
