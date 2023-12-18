@@ -12,14 +12,14 @@ body {
 
 h1{
     font-family:'Dancing Script';
-    margin-top:  15vh;
+    margin-top: 30vh;
     display: flex;
     align-content: center;
-    color: #545454;
+    color: black;
     font-size: 60px;
     font-weight: bolder;
     justify-content: center;
-}
+  }
 h2 {
     font-family:'Dancing Script';
     color: black;
@@ -29,13 +29,29 @@ h2 {
 
 h3 {
     font-family:'Montserrat';
-    padding-top: 20 px;
-    color: #545454;
+    color: black;
     font-size: 12px;
+    justify-content: center;    
+   }
+
+   h4 {
+    font-family:'Montserrat';
+    color:black;
+    font-size: 10px;
     font-style: italic;
     justify-content: center;    
 
    }
+
+   h5 {
+    font-family:'Montserrat';
+    color:black;
+    font-size: 8px;
+    font-style: italic;
+    justify-content: center;    
+
+   }
+
 /*Aboutartspot.html*/
 .flip-card {
     box-sizing: border-box; /* Include padding and border in the total width and height */
@@ -282,8 +298,13 @@ h3 {
 
 }
 
-@media screen and (max-width: 992px)
-{
+@media (min-width: 992px) {
+.navbar-expand-lg .navbar-nav .nav-link {
+        display: flex;
+        margin-left: 4vw;
+        padding-right: var(--bs-navbar-nav-link-padding-x);
+        padding-left: var(--bs-navbar-nav-link-padding-x);
+ } 
 
 }
 @media screen and (max-width: 1200px)

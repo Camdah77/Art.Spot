@@ -34,7 +34,7 @@ def account_profile(request):
 
 
 # MARKETPLACE 
-def onsale(request):
+def market(request):
     products = Product.objects.all()
     return render(request, 'artworks/artworks.html', {'products':products})
 

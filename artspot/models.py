@@ -55,8 +55,12 @@ class Product(models.Model):
         category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
         description = models.CharField(max_length=250, default='', null=True, blank=True)
         price_amount = models.DecimalField(default=0, decimal_places=2, max_digits=5)
-        price_currency = models.CharField(default='EUR', max_length=3)
+        price_currency = models.CharField(default='EUR', max_length=4)
         image = models.ImageField(upload_to='product_images')
+        is_sale = models.BooleanField(default=False)
+        sale_price = models.DecimalField(default=0, decimal_places=2, max_digits=5)
+        sale_currency = models.CharField(default='EUR', max_length=3)
+
         def __str__(self):
             return self.name
 
