@@ -21,24 +21,77 @@ h1{
     justify-content: center;
 }
 h2 {
-    padding-bottom: 30px ;
     font-family:'Dancing Script';
     color: black;
-    font-size: 14px;
-    font-weight:bold;
-    margin-right: 200px;
-    margin-left: 80px;
-    
+    font-size: 12px;
+    justify-content: center; 
 }
+
 h3 {
     font-family:'Montserrat';
+    padding-top: 20 px;
     color: #545454;
     font-size: 12px;
     font-style: italic;
-    margin-right: 200px;
-    margin-left: 80px;
-   
+    justify-content: center;    
+
+   }
+/*Aboutartspot.html*/
+.flip-card {
+    box-sizing: border-box; /* Include padding and border in the total width and height */
+    width: 100%; /* Use percentage for responsiveness */
+    max-width: 500px; /* Set a maximum width if needed */
+    height: 300px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px;
 }
+
+.row justify-content-center {
+    display: flexbox;
+}
+
+row {
+ bs-gutter-x: 0rem; 
+}
+
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  
+  /* Style the front side (fallback if image is missing) */
+  .flip-card-front {
+    background-color: #bbb;
+    color: #545454;
+  }
+  
+  /* Style the back side */
+  .flip-card-back {
+    background-color: #545454;
+    color: white;
+    transform: rotateY(180deg);
+    
+  }
+
 
 /*Base.html: Header*/
 header{
@@ -93,52 +146,8 @@ span.helptext {
     font-size: 10px;
 }
 
-/*Aboutartspot.html*/
-.container-fluid{
-    padding-top: 10vh;
-    background-color: pink;
-    padding-bottom: 10vh;
-}
-.col image {
-    width: 50%;
 
-}
-.collapsible {
-    background-color: #545454;
-    color: white;
-    cursor: pointer;
-    padding-block-end: 18px;
-    width: 100%;
-    height: 100px;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-  }
-  
-  .active, .collapsible:hover {
-    background-color: #414853;
-  }
-  
-  .collapsible:after {
-    content: '\002B';
-    color: #414853;
-    font-weight: bold;
-    float: right;
-    margin-left: 5px;
-  }
-  
-  .active:after {
-    content: "\2212";
-  }
-  
-  .content {
-    padding: 0 18px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-    background-color: #f1f1f1;
-  }
+
 button.btn.btn-signup.right {
     background-color: #445261;
     color: #fff;
