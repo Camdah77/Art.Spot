@@ -13,35 +13,29 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-# pp4/urls.py
-
 from django.contrib import admin
 from django.urls import path, include
 from artspot.views import (
     landing_page, add_artwork, edit_artwork, delete_artwork,
-    home, about, blog, events, market, login, logout, signup, PostList, PostDetail, PostLike, account_profile
-)
+    home, about, blog, events, market, custom_login, logout,  PostList, PostDetail, PostLike, profile, UserSignup)
 from artspot import views as pp4_views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-from members.views import UserRegisterView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),  # This is for the empty path
+    path('', home, name='home'), 
     path('add/', pp4_views.add_artwork, name='add_artwork'),
     path('edit/<artwork_id>/', pp4_views.edit_artwork, name='edit'),
     path('delete/<artwork_id>/', pp4_views.delete_artwork, name='delete'),
     path('about/', about, name='about'),
     path('events/', events, name='events'),
     path('market/', market, name='market'),
-    path('login/', login, name='login'),
-    path('logout/', logout, name='logout'),
+    path('login/', custom_login, name='login'),
+    path('signup/', UserSignup.as_view(), name='signup'),
     path('summernote/', include('django_summernote.urls')),
-    path('profile/', account_profile, name='account_profile'),
-    path('members/', include('django.contrib.auth.urls')),
-    path('members/', include('members.urls')),
+    path('profile/', profile, name='profile'),
     path('blog/', PostList.as_view(), name='blog'),
     path('<slug:slug>/', PostDetail.as_view(), name='post_detail'),
     path('like/<slug:slug>', PostLike.as_view(), name='post_like'),

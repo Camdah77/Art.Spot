@@ -51,7 +51,39 @@ h3 {
     justify-content: center;    
 
    }
+/*Base.html: Header*/
+header{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    height: 80px;
+    width: 100%;
+    z-index: 1000;
+    top: 0;
+}
 
+/*Base.html:Logotype*/
+.navbar-brand img {
+    justify-content: flex-start;
+    width: 300px;
+    padding-bottom: 30px;
+}
+/*Base.html:Logotype*/
+.navbar {
+    margin-right: 20px; 
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color: #1A313C;
+    font-size: 18px;
+    font-weight: bold;
+    justify-content: flex-end;
+}
+/*Index.html:Logotype*/
+
+.heroimg {
+    width: 100%;
+}
 /*Aboutartspot.html*/
 .flip-card {
     box-sizing: border-box; /* Include padding and border in the total width and height */
@@ -65,7 +97,6 @@ h3 {
 .row justify-content-center {
     display: flexbox;
 }
-
 
   /* This container is needed to position the front and back side */
   .flip-card-inner {
@@ -102,43 +133,18 @@ h3 {
     background-color: #545454;
     color: white;
     transform: rotateY(180deg);
-    
-  }
+     }
 
 
-/*Base.html: Header*/
-header{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 100%;
-    height: 80px;
-    width: 100%;
-    z-index: 1000;
-    top: 0;
-}
 
-/*Base.html:Logotype*/
-.navbar-brand img {
-    justify-content: flex-start;
-    width: 300px;
-    padding-bottom: 30px;
-}
-/*Base.html:Logotype*/
-.navbar {
-    margin-right: 20px; 
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-    color: #1A313C;
-    font-size: 18px;
+/*Signup.html:*/
+.link,
+.link:hover,
+.link:active {
+    color: black;
+    text-decoration: none;
     font-weight: bold;
-    justify-content: flex-end;
 }
-/*Index.html:Logotype*/
-.heroimg {
-    width: 100%;
-}
-/*Register.html:Logotype*/
 .form-group {
     padding-top: 15vh;
     padding-bottom: 15vh;
@@ -248,17 +254,6 @@ button.btn.btn-signup.right {
     color: lightgray;
 }
 
-
-.link {
-    color: #23BBBB;
-    text-decoration: none;
-}
-
-.link:hover,
-.link:active {
-    color: #445261;
-    text-decoration: underline;
-}
 
 .btn-like {
     color: #E84610;

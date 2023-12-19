@@ -2,13 +2,16 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import generic, View
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout 
 from django.contrib import messages
 from .models import Artwork, Post, Comment, Product
 from .forms import AddArtworkForm, CommentForm
+from django.contrib.auth.forms import UserCreationForm
+
 
 # HTML- pages
 def landing_page(request):
@@ -23,17 +26,32 @@ def market(request):
     return render(request, 'artworks/artworks.html')   
 def about(request):
     return render(request, 'about/aboutartspot.html')  
-def login(request):
-    return render(request, 'account/login.html')
-def logout(request):
-    return render(request, 'account/logout.html')  
+def custom_login(request):
+    return render(request, 'members/login.html')
 def signup(request):
-    return render(request, 'account/signup.html')  
-def account_profile(request):
-    return render(request, 'account/profile.html')  
+    return render(request, 'members/signup.html')  
+def profile(request):
+    return render(request, 'members/profile.html')  
 
+# members/login.html
+def custom_login(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, "Welcome. We wish you a creative day!")
+            return redirect('home')
+    return render(request, 'members/login.html')
 
-# MARKETPLACE 
+# Signup.html
+class UserSignup(generic.CreateView):
+    form_class = UserCreationForm
+    template_name = 'members/signup.html'  
+    success_url = reverse_lazy('signup') 
+
+# Artmarket 
 def market(request):
     products = Product.objects.all()
     return render(request, 'artworks/artworks.html', {'products':products})
