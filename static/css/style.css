@@ -136,8 +136,13 @@ header{
      }
 
 
-
 /*Signup.html:*/
+.carousel-control-prev-icon {
+    color: #E84610;
+}
+  .carousel-control-next-icon {
+    color: black;
+  }
 .link,
 .link:hover,
 .link:active {
@@ -164,7 +169,6 @@ span.helptext {
     font-style: italic;
     font-size: 10px;
 }
-
 
 
 button.btn.btn-signup.right {
@@ -267,6 +271,15 @@ button.btn.btn-signup.right {
     background: transparent;
     border: none;
 }
+
+.cardimage {
+    display: flex;
+    width: 300px;
+}
+
+
+
+
 
 @media screen and (max-width: 600px){
 

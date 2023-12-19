@@ -1,76 +1,76 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
 
+<link href="{% static 'css/stylesabout.css' %}" rel="stylesheet">
+
 <h1>This is Art.Spot</h1>
-<div class="row justify-content-center">
-    <!-- Card1-->
-    <div class="col-md-6 mx-auto">
-    <div class="flip-card">
-           <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img src="{% static 'images/Art.spot1.webp' %}" alt="Grow as an artist" style="width:500px;height:300px;">
-          </div>
-          <div class="flip-card-back">
-            <h2>You are not alone!</h2>
-            <p>"It's easy to feel isolated as an artist , spending numerous hours alone in your studio. 
-              That's why Art.Spot is here for you; we exclusively focus on artists like yourself."</p>
-            </div>
-        </div>
-      </div>
-    </div>
-  
-      <!-- Card2-->
-      <div class="col-md-6 mx-auto">
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img src="{% static 'images/Art.spot2.webp' %}" alt="Together with others" style="width:500px;height:300px;">
-          </div>
-          <div class="flip-card-back">
-            <h2>Shared happiness = double joy</h2>
-            <p>"In our blog, all members can share daily happenings, whether they are big or small. 
-              You don't need to be a professional artist—maybe you are just starting your 
-              hobby—so feel free to share. It's more fun together!"</p>
+<div class="container px-4 px-lg-5">
+  <!-- Heading Row-->
+  <div class="row gx-4 gx-lg-5 align-items-center my-5">
+      <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'images/1.webp' %}" alt="Grow as an artist"></div>
+      <div class="col-lg-5">
+          <h1 class="font-weight-light">Our simple philosophy!</h1>
+          <p>T "By sharing our experiences and learning from others, 
+            you'll not only grow as a person and an artist but also increase your art sales!"</p>
            </div>
-        </div>
+  </div>
+  <!-- Call to Action-->
+  <div class="card text-white bg-secondary my-5 py-4 text-center">
+      <div class="card-body"><p class="text-white m-0">You are not alone!</p></div>
+  </div>
+  <!-- Content Row-->
+  <div class="row gx-4 gx-lg-5">
+      <div class="col-md-4 mb-5">
+          <div class="card h-100">
+              <div class="card-body">
+                  <h2 class="card-title">You are not alone!</h2>
+                  <p class="card-text">"It's easy to feel isolated as an artist , spending numerous hours alone in your studio. 
+                    That's why Art.Spot is here for you; we exclusively focus on artists like yourself."</p>
+              </div>
+               </div>
       </div>
-    </div>
-
-    <div class="row justify-content-center">
-  <!-- Card3-->
-  <div class="col-md-6 mx-auto">
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <img src="{% static 'images/Art.spot3.webp' %}" alt="Learn from others" style="width:500px;height:300px">
+      <div class="col-md-4 mb-5">
+          <div class="card h-100">
+              <div class="card-body">
+                  <h2 class="card-title">Live-events!</h2>
+                  <p class="card-text">"Every week, we organize a live event that can cover anything from selling more 
+                    paintings and marketing yourself on social media to painting along with well-known artists!"</p>
+              </div>
+             </div>
       </div>
-      <div class="flip-card-back">
-        <h2>Live-events</h2>
-        <p>"Every week, we organize a live event that can cover anything from selling more 
-          paintings and marketing yourself on social media to painting along with well-known artists!"</p>
-       </div>
-    </div>
+      <div class="col-md-4 mb-5">
+          <div class="card h-100">
+              <div class="card-body">
+                  <h2 class="card-title">Inspiration!</h2>
+                  <p class="card-text">"In our blog, all members can share daily happenings, whether they are big or small. 
+                    You don't need to be a professional artist—maybe you are just starting your 
+                    hobby—so feel free to share. It's more fun together!"</p>
+              </div>
+  
+      </div>
   </div>
 </div>
+<div class="row gx-4 gx-lg-5">
+  <div class="col-md-4 mb-5">
+      <div class="card h-100">
+          <div class="card-body">
+            <img src="{% static 'images/2.webp' %}" class="cardimage" alt="Grow as an artist">
+          </div>
+          <div class="row gx-4 gx-lg-5">
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                      <img src="{% static 'images/3.webp' %}" class="cardimage" alt="Grow as an artist">
+                    </div>
+                    <div class="row gx-4 gx-lg-5">
+                      <div class="col-md-4 mb-5">
+                          <div class="card h-100">
+                              <div class="card-body">
+                                <img src="{% static 'images/4.webp' %}" class="cardimage"alt="Grow as an artist">
+                              </div>
+       
+          
+        
     
-  <!-- Card4-->
-  <div class="col-md-6 mx-auto">
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <img src="{% static 'images/Art.spot4.webp' %}" alt="Share your experience" style="width:500px;height:300px;">
-      </div>
-      <div class="flip-card-back">
-        <h2>Our simple philosophy!</h2>
-        <p> "By sharing our experiences and learning from others, 
-          you'll not only grow as a person and an artist but also increase your art sales!"</p>
-       </div>
-    </div>
-  </div>
-</div>
-
- </div>
-
         {% endblock %}
