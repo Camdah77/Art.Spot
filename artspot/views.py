@@ -1,17 +1,16 @@
-from django.contrib.auth import login, authenticate 
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
+from django.contrib.auth.views import PasswordChangeView, LogoutView
+from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
 from django.template import loader
 from django.urls import reverse, reverse_lazy
 from django.views import generic, View
-from django.views.generic import ListView, DetailView
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login, logout 
-from django.contrib import messages
-from .models import Artwork, Post, Comment, Product
-from .forms import AddArtworkForm, CommentForm
+from django.views.generic import ListView, DetailView, CreateView, TemplateView
+from .models import Artwork, Post, Comment, Product, Profile
+from .forms import AddArtworkForm, CommentForm, SignUpForm, EditProfileForm, PasswordChangingForm, ProfilePageForm
 from django.contrib.auth.forms import UserCreationForm
-
 
 # HTML- pages
 def landing_page(request):
@@ -28,10 +27,123 @@ def about(request):
     return render(request, 'about/aboutartspot.html')  
 def custom_login(request):
     return render(request, 'members/login.html')
-def signup(request):
-    return render(request, 'members/signup.html')  
+def UserRegisterView(request):
+    return render(request, 'members/register.html')  
+def logout(request):
+    return render(request, 'members/logout.html')  
 def profile(request):
     return render(request, 'members/profile.html')  
+
+
+#Member Logout
+class LogoutView(LogoutView):
+    pass
+
+class CreateProfilePageView(CreateView):
+    model = Profile
+    form_class = ProfilePageForm
+    template_name = 'members/signup.html'
+    # fields = '__all__'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+class EditProfilePageView(generic.UpdateView):
+    model = Profile
+    template_name = 'members/editprofile.html'
+    fields = ['bio', 'profile_pic', 'website_url', 'facebook_url', 'instagram_url', ]
+    success_url = reverse_lazy('home')
+
+class ShowProfilePageView(DetailView):
+    model = Profile
+    template_name = 'members/profile.html'
+
+    def get_context_data(self, *args, **kwargs):
+        # users = Profile.objects.all()
+        context = super(ShowProfilePageView, self).get_context_data(*args, **kwargs)
+
+        page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
+
+        context["page_user"] = page_user
+        return context
+
+class PasswordsChangeView(PasswordChangeView):
+    form_class = PasswordChangingForm
+    # form_class = PasswordChangeForm
+    success_url = reverse_lazy('password_success')
+    # success_url = reverse_lazy('home')
+
+def password_success(request):
+    return render(request, 'members/password_sussess.html')
+
+class UserRegisterView(generic.CreateView):
+    form_class = SignUpForm
+    template_name = 'members/signup.html'
+    success_url = reverse_lazy('login')
+
+class UserEditView(generic.UpdateView):
+    form_class = EditProfileForm
+    template_name = 'members/editprofile.html'
+    success_url = reverse_lazy('home')
+
+    def get_object(self):
+        return self.request.user
+
+class PostDetail(View):
+
+    def get(self, request, slug, *args, **kwargs):
+        print(f"Slug value: {slug}")  # Add this line
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        comments = post.comments.filter(approved=True).order_by("-created_on")
+        liked = False
+        if post.likes.filter(id=self.request.user.id).exists():
+            liked = True
+
+        return render(
+            request,
+            "blogg/post_detail.html",
+            {
+                "post": post,
+                "comments": comments,
+                "commented": False,
+                "liked": liked,
+                "comment_form": CommentForm()
+            },
+        )
+
+    def post(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        comments = post.comments.filter(approved=True).order_by("-created_on")
+        liked = False
+        if post.likes.filter(id=self.request.user.id).exists():
+            liked = True
+
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment_form.instance.email = request.user.email
+            comment_form.instance.name = request.user.username
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            comment.save()
+        else:
+            comment_form = CommentForm()
+
+        return render(
+            request,
+            "blogg/post_detail.html",
+            {
+                "post": post,
+                "comments": comments,
+                "commented": True,
+                "comment_form": comment_form,
+                "liked": liked
+            },
+        )
+
 
 # members/login.html
 def custom_login(request):
@@ -45,12 +157,18 @@ def custom_login(request):
             return redirect('home')
     return render(request, 'members/login.html')
 
-# Signup.html
-class UserSignup(generic.CreateView):
-    form_class = UserCreationForm
-    template_name = 'members/signup.html'  
-    success_url = reverse_lazy('signup') 
 
+#member/logout
+def render_logout(request):
+    return render(request, 'members/logout.html')
+
+
+# members/Signup.html
+class UserRegisterView(generic.CreateView):
+    form_class = SignUpForm
+    template_name = 'members/register.html'
+    success_url = reverse_lazy('login')
+    
 # Artmarket 
 def market(request):
     products = Product.objects.all()
@@ -99,29 +217,6 @@ class PostList(generic.ListView):
     template_name = "blogg/blog.html"
     paginate_by = 6
 
-
-class PostDetail(View):
-
-    def get(self, request, slug, *args, **kwargs):
-        queryset = Post.objects.filter(status=1)
-        post = get_object_or_404(queryset, slug=slug)
-        comments = post.comments.filter(approved=True).order_by("-created_on")
-        liked = False
-        if post.likes.filter(id=self.request.user.id).exists():
-            liked = True
-
-        return render(
-            request,
-            "blogg/post_detail.html",
-            {
-                "post": post,
-                "comments": comments,
-                "commented": False,
-                "liked": liked,
-                "comment_form": CommentForm()
-            },
-        )
-    
     def post(self, request, slug, *args, **kwargs):
 
         queryset = Post.objects.filter(status=1)
@@ -152,7 +247,6 @@ class PostDetail(View):
                 "liked": liked
             },
         )
-
 
 class PostLike(View):
     

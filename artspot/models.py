@@ -1,9 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.urls import reverse
+from datetime import datetime, date
+from ckeditor.fields import RichTextField
 from django.utils.text import slugify
 from django.utils import timezone
-import datetime
+
 timezone.now()
 
 #Marketplace
@@ -71,7 +74,7 @@ class Order(models.Model):
     quantity = models.IntegerField(default=1)
     adress =  models.CharField(max_length=100, default='', null=True, blank=True)
     phone = models.CharField(max_length=20, default='',  null=True, blank=True)
-    date = models.DateTimeField(default=datetime.datetime.today)
+    date = models.DateTimeField(default=datetime.today)
     status = models.BooleanField(default=False)
 
     def __str__(self):
@@ -89,7 +92,7 @@ class Post(models.Model):
     )
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
-    updated_on = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField(default=datetime.today)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
@@ -121,3 +124,20 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
 
+#Profile 
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+    profile_pic = models.ImageField(null=True, blank=True, upload_to="images/profile/")
+    website_url = models.CharField(max_length=255, null=True, blank=True)
+    facebook_url = models.CharField(max_length=255, null=True, blank=True)
+    twitter_url = models.CharField(max_length=255, null=True, blank=True)
+    instagram_url = models.CharField(max_length=255, null=True, blank=True)
+    pinterest_url = models.CharField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.user)
+
+    def get_absolute_url(self):
+        return reverse('home')
