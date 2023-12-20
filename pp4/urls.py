@@ -5,9 +5,10 @@ from django.contrib import admin
 from django.urls import path, include
 from artspot import views
 from artspot.views import (
-    landing_page, add_artwork, edit_artwork, delete_artwork, PostList, PostDetail, custom_login, 
-    home, about, blog, events, market, UserRegisterView, UserEditView, PasswordsChangeView, 
-    ShowProfilePageView, EditProfilePageView, CreateProfilePageView, password_success, Post_like, product, category)
+    landing_page, add_artwork, edit_artwork, delete_artwork, PostList, signout, custom_logout,
+    PostDetail, custom_login, home, about, blog, events, market, 
+    UserRegisterView, UserEditView, PasswordsChangeView, ShowProfilePageView, 
+    EditProfilePageView, CreateProfilePageView, password_success, Post_like, product, category)
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
@@ -26,9 +27,9 @@ urlpatterns = [
     path('market/', market, name='market'),
     path('blog/', PostList.as_view(), name='blog'),
     path('like/<slug:slug>/', Post_like.as_view(), name='post_like'),
-    path('members/', include('allauth.urls')),
     path('login/', custom_login, name='login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='members/logout.html'), name='logout'),
+    path('signout/', signout, name='signout'),
+    path('logout', views.custom_logout, name='logout'),
     path('register/', UserRegisterView.as_view(), name='register'),
     path('edit_profile/', UserEditView.as_view(), name='edit_profile'),
     path('password/', PasswordsChangeView.as_view(template_name='members/password_change.html'), name='password_change'),
@@ -40,7 +41,6 @@ urlpatterns = [
     path('create_profile_page/', CreateProfilePageView.as_view(), name='create_profile_page'),
     path('<slug:slug>/', PostDetail.as_view(), name='post_detail'),
     path('', home, name='home'),
-    path("members/", include("allauth.urls")),
 ]
 
 

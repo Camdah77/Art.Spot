@@ -11,6 +11,7 @@
                 <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About ArtSpot</a></li>
 
                 {% if user %}
+
                 <li class="nav-item {% ifequal request.path '/blog/' %}active{% endifequal %}">
                     <a class="nav-link" href="{% url 'blog' %}">Blog</a>
 
@@ -28,13 +29,9 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <form method="post" action="{% url 'logout' %}">
-                            {% csrf_token %}
-                            <button type="submit" class="login-register-button">{% trans 'Sign Out' %}</button>
-                        </form>
-                        
+                        <a href="{% url 'signout' %}" class="nav-link">LogOut</a>
 
-                </li>
+
                 
 
                 {% else %}

@@ -1,11 +1,9 @@
-from django.http import HttpResponseRedirect
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
-from django.contrib.auth.views import PasswordChangeView, LogoutView
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm, AuthenticationForm
+from django.contrib.auth.views import PasswordChangeView
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse, reverse_lazy
 from django.views import generic, View
@@ -27,8 +25,8 @@ def market(request):
     return render(request, 'artworks/artworks.html')   
 def about(request):
     return render(request, 'about/aboutartspot.html')  
-def custom_login(request):
-    return render(request, 'members/login.html')
+def signout(request):
+    return render(request, 'members/logout.html')
 def UserRegisterView(request):
     return render(request, 'members/register.html')  
 def profile(request):
@@ -36,9 +34,29 @@ def profile(request):
 def profile(request):
     return render(request, 'members/profile.html')  
 
+def signout(request):
+    return render(request, 'members/logout.html')
 
-def LogoutView(request):
-     return render(request, 'members/logout.html')
+def custom_logout(request):
+    logout(request)
+    messages.info(request, "Logged out successfully!")
+    return redirect("home")
+
+def custom_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            # Redirect to a success page.
+            return redirect('home')  # Adjust the URL as needed.
+        else:
+            # Return an 'invalid login' error message.
+            return render(request, 'members/login.html', {'error_message': 'Invalid login credentials'})
+
+    return render(request, 'members/login.html')
 
 def product(request, pk):
     product = Product.objects.get(id=pk)
