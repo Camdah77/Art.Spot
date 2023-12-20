@@ -1,14 +1,16 @@
+from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView, LogoutView
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse, reverse_lazy
 from django.views import generic, View
 from django.views.generic import ListView, DetailView, CreateView, TemplateView
-from .models import Artwork, Post, Comment, Product, Profile
+from .models import Artwork, Post, Comment, Product, Profile, Category
 from .forms import AddArtworkForm, CommentForm, SignUpForm, EditProfileForm, PasswordChangingForm, ProfilePageForm
 from django.contrib.auth.forms import UserCreationForm
 
@@ -29,15 +31,32 @@ def custom_login(request):
     return render(request, 'members/login.html')
 def UserRegisterView(request):
     return render(request, 'members/register.html')  
-def logout(request):
-    return render(request, 'members/logout.html')  
+def profile(request):
+    return render(request, 'members/profile.html')  
 def profile(request):
     return render(request, 'members/profile.html')  
 
 
-#Member Logout
-class LogoutView(LogoutView):
-    pass
+def LogoutView(request):
+     return render(request, 'members/logout.html')
+
+def product(request, pk):
+    product = Product.objects.get(id=pk)
+    return render(request, 'artworks/product.html', {'product': product})
+
+def category(request, foo):
+	# Replace Hyphens with Spaces
+	foo = foo.replace('-', ' ')
+	# Grab the category from the url
+	try:
+		# Look Up The Category
+		category = Category.objects.get(name=foo)
+		products = Product.objects.filter(category=category)
+		return render(request, 'artworks/category.html', {'products':products, 'category':category})
+	except:
+		messages.success(request, ("That Category Doesn't Exist..."))
+		return redirect('home')
+  
 
 class CreateProfilePageView(CreateView):
     model = Profile
@@ -76,11 +95,6 @@ class PasswordsChangeView(PasswordChangeView):
 
 def password_success(request):
     return render(request, 'members/password_sussess.html')
-
-class UserRegisterView(generic.CreateView):
-    form_class = SignUpForm
-    template_name = 'members/signup.html'
-    success_url = reverse_lazy('login')
 
 class UserEditView(generic.UpdateView):
     form_class = EditProfileForm
@@ -144,7 +158,6 @@ class PostDetail(View):
             },
         )
 
-
 # members/login.html
 def custom_login(request):
     if request.method == "POST":
@@ -155,12 +168,12 @@ def custom_login(request):
             login(request, user)
             messages.success(request, "Welcome. We wish you a creative day!")
             return redirect('home')
-    return render(request, 'members/login.html')
-
-
-#member/logout
-def render_logout(request):
-    return render(request, 'members/logout.html')
+        else:
+            messages.success(request, "Please try again")
+            return redirect('members/login.html')
+    
+    else:
+        return render(request, 'members/login.html', {})
 
 
 # members/Signup.html
@@ -248,8 +261,7 @@ class PostList(generic.ListView):
             },
         )
 
-class PostLike(View):
-    
+class Post_like(View):
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
@@ -257,4 +269,4 @@ class PostLike(View):
         else:
             post.likes.add(request.user)
 
-        return HttpResponseRedirect(reverse('blogg/post_detail.html', args=[slug]))
+        return HttpResponseRedirect(reverse('artspot:post_detail', args=[slug]))
