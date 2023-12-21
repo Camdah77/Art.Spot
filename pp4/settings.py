@@ -11,7 +11,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+
 # Media directory
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sites',
-    'ckeditor_uploader',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -95,15 +94,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'pp4.wsgi.application'
-
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'Full',
-        'height': 300,
-        'width': 800,
-        'contentsCss': ['/static/css/custom_ckeditor.css'],  # Adjust the path accordingly
-    },
-}
 
 
 # Database
@@ -161,5 +151,3 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
-
-COMPRESS_ENABLED = False

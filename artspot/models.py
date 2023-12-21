@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.urls import reverse
 from datetime import datetime, date
-from ckeditor.fields import RichTextField
 from django.utils.text import slugify
 from django.utils import timezone
 
