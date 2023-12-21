@@ -25,8 +25,6 @@ urlpatterns = [
     path('about/', about, name='about'),
     path('events/', events, name='events'),
     path('market/', market, name='market'),
-    path('blog/', PostList.as_view(), name='blog'),
-    path('like/<slug:slug>/', Post_like.as_view(), name='post_like'),
     path('login/', custom_login, name='login'),
     path('signout/', signout, name='signout'),
     path('logout', views.custom_logout, name='logout'),
@@ -40,9 +38,10 @@ urlpatterns = [
     path('category/<str:foo>', category, name='category'),
     path('create_profile_page/', CreateProfilePageView.as_view(), name='create_profile_page'),
     path('<slug:slug>/', PostDetail.as_view(), name='post_detail'),
+    path('blog/', PostList.as_view(), name='blog'),
+    path('like/<slug:slug>/', Post_like.as_view(), name='post_like'),
     path('', home, name='home'),
 ]
-
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

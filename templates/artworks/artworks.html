@@ -3,7 +3,30 @@
 {% load static %}
 <link href="{% static 'css/stylesmarket.css' %}" rel="stylesheet">
 <!-- Banner for market-->
-<container class="contentcontainer">
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Active</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Categoeries</a>
+      <div class="dropdown-menu">
+       <li></li> <a class="dropdown-item" href="{% url 'category' 'Faces' %}">Faces</a></li>
+       <li><a class="dropdown-item" href="{% url 'category' 'Abstract' %}"></a></li>
+       <li></li> <a class="dropdown-item" href="{% url 'category' 'Homedecor' %}">Home Decor</a></li>
+       <li></li> <a class="dropdown-item" href="{% url 'category' 'Artsupply' %}">Art Suppliesr</a></li>
+       <li></li> <a class="dropdown-item" href="{% url 'category' 'Animals' %}">Animals</a></li>
+        <div class="dropdown-divider"></div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled">Disabled</a>
+    </li>
+  </ul>
+
     <h1> Art.Market </h1>
 
 <section class="py-5">

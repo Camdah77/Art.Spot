@@ -3,7 +3,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-<h1> B.L.O.G</h1>
+<h1> Blog</h1>
 
 <div class="container-fluid">
     <div class="row">
@@ -12,13 +12,14 @@
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for post in post_list %}
+                
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
                                 <img class="card-img-top"
-                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                                src="{% static 'images/blogtop.webp' %}">
                                 {% else %}
                                 <img class="card-img-top" src=" {{ post.featured_image.url }}">
                                 {% endif %}
@@ -26,8 +27,7 @@
                                     <p class="author">Author: {{ post.author }}</p>
                                 </div>
                             </div>
-                          
-                            <a href="{% url 'post_like' post.slug  %}" class="post-link">
+                            <a href="{% url 'post_detail' post.slug  %}" class="post-link">
                                 <h2 class="card-title">{{ post.title }}</h2>
                                 <p class="card-text">{{ post.excerpt }}</p>
                             </a>

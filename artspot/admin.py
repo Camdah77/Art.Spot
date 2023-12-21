@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Artwork, Post, Comment, Category, Product, Customer, Order, Medium
 from django_summernote.admin import SummernoteModelAdmin
+from ckeditor.widgets import CKEditorWidget
 
 # Register your models here.
 admin.site.register(Artwork)
