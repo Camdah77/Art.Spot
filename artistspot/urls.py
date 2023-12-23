@@ -26,8 +26,7 @@ urlpatterns = [
     path('<slug:slug>/', PostDetail.as_view(), name='post_detail'),
     path('members/', include('allauth.urls')),
     path('', home, name='home'),
-  
-]
+ ]
 
 
 if settings.DEBUG:

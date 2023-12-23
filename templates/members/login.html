@@ -1,9 +1,20 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+
 {% load crispy_forms_tags %}
 {% block content %}
 
 <h1>Enter our colourful world</h1>
-<br/>
+
+
+<div class="container-fluid">
+    <div class="row">
+
+
+        <div class="col-12 mt-3 left">
+            <div class="row">
 <div class="alreadymember">Need an account?<a href="{% url 'register' %}">Sign Up here</a></div>
 	<div class="row">
 	    <div class="col-md-12 text-center">
