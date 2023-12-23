@@ -30,7 +30,7 @@ def about(request):
     return render(request, 'about/aboutartspot.html')  
 def custom_login(request):
     return render(request, 'members/login.html')
-def signout(request):
+def logout(request):
     return render(request, 'members/logout.html')
 def UserRegisterView(request):
     return render(request, 'members/register.html')  
@@ -75,7 +75,7 @@ def register(request):
     return render(request, 'members/register.html', context)
             
 # members/logout.html
-def LogoutView(request):
+def logout(request):
      return render(request, 'members/logout.html')
      return render(request, 'members/login.html')
 

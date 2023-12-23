@@ -4,14 +4,13 @@
 {% block content %}
 
 
-    {% block title %}Signup{% endblock %}
-    <h1>Welcome to our colourful world</h1>
+   <h1>Welcome to our colourful world</h1>
 
     <br/>
 	<div class="container-fluid">
 	       	    
 <div class="alreadymember">Already a member? <a href="{% url 'login' %}">Login here</a></div>
-<form action="{% url 'register' %}" method="POST">
+<form action="{% url 'welcome' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}            
     <input type="submit" value="SignUp" class="btn btn-default" role="button"/>

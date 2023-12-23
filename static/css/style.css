@@ -187,8 +187,12 @@ button.btn.btn-signup.right {
     background-color: #C6AB6B;
     font-size: 14px;
     font-family: 'Montserrat', sans-serif;
-
 }
+
+.btn btn-default{
+  background-color: #7D694C;
+}
+
 
 .masthead {
     margin-top: 10px;
