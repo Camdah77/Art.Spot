@@ -1,1 +1,1 @@
-web: gunicorn pp4.wsgi
+web: gunicorn artistspot.wsgi
