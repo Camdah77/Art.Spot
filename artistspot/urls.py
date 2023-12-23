@@ -1,22 +1,40 @@
-"""
-URL configuration for artistspot project.
+from django.urls import path, include
+from artspot import views
+from artspot.views import (
+    landing_page, add_artwork, edit_artwork, delete_artwork, PostList, PostDetail, custom_login, 
+    home, about, blog, events, market, UserRegisterView, UserEditView, PasswordsChangeView, 
+    ShowProfilePageView, EditProfilePageView, CreateProfilePageView, password_success, Post_like, product, category)
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
-from django.urls import path
-
+app_name = 'artspot'
 urlpatterns = [
+    path("accounts/", include("django.contrib.auth.urls")),
     path('admin/', admin.site.urls),
+    path('add/', add_artwork, name='add_artwork'),
+    path('edit/<artwork_id>/', edit_artwork, name='edit'),
+    path('delete/<artwork_id>/', delete_artwork, name='delete'),
+    path('about/', about, name='about'),
+    path('events/', events, name='events'),
+    path('market/', market, name='market'),
+    path('blog/', PostList.as_view(), name='blog'),
+    path('like/<slug:slug>/', Post_like.as_view(), name='post_like'),
+    path('members/', include('allauth.urls')),
+    path('login/', custom_login, name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='members/logout.html'), name='logout'),
+    path('signout/', signout, name='signout'),
+    path('logout', views.custom_logout, name='logout'),
+    path('register/', UserRegisterView.as_view(), name='register'),
+    path('edit_profile/', UserEditView.as_view(), name='edit_profile'),
+    path('password/', PasswordsChangeView.as_view(template_name='members/password_change.html'), name='password_change'),
+    path('password_success', password_success, name='password_success'),
+    path('<int:pk>/profile/', ShowProfilePageView.as_view(), name='show_profile_page'),
+    path('<int:pk>/edit_profile_page/', EditProfilePageView.as_view(), name='edit_profile_page'),
+    path('product/<int:pk>/', product, name='product'),
+    path('category/<str:foo>', category, name='category'),
+    path('create_profile_page/', CreateProfilePageView.as_view(), name='create_profile_page'),
+    path('<slug:slug>/', PostDetail.as_view(), name='post_detail'),
+    path('', home, name='home'),
+    path("members/", include("allauth.urls")),
 ]
