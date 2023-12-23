@@ -11,7 +11,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic, View
 from django.views.generic import ListView, DetailView, CreateView, TemplateView
 from .models import Artwork, Post, Comment
-from .forms import LoginForm, CustomUserCreationForm, AddArtworkForm, CommentForm
+from .forms import LoginForm, NewUserForm, AddArtworkForm, CommentForm
 from django.contrib.auth.forms import UserCreationForm
 
 # HTML- pages
@@ -60,14 +60,17 @@ def custom_login(request):
         return render(request, 'members/login.html', {})
 
 # members/register.html
-class UserRegisterView(generic.CreateView):
-    form_class = UserCreationForm
-    template_name = 'members/register.html'
-    success_url = reverse_lazy('login')
-def custom_logout(request):
-    logout(request)
-    messages.info(request, "Logged out successfully!")
-    return redirect("home")
+def registration(request):
+    if request.method == 'POST':
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            messages.success(request, 'Registration successful. You can now log in.')
+            return redirect('login')  # Redirect to your login page
+    else:
+        form = NewUserForm()
+
+    return render(request, 'members/register.html', {'form': form})
 
 
 # members/logout.html

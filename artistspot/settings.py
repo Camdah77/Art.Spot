@@ -29,9 +29,21 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-camdah77-artspot-p6z040aiprb.ws-eu107.gitpod.io',
-                'artspot-1537d6fa1517.herokuapp.com',
-                'localserver']
+ALLOWED_HOSTS = [
+    '8000-camdah77-artspot-p6z040aiprb.ws-eu107.gitpod.io',
+    'artspot-1537d6fa1517.herokuapp.com',
+    'localserver',
+]
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-camdah77-artspot-p6z040aiprb.<ws-eu107.gitpod.io>',
+    'https://artspot-1537d6fa1517.<herokuapp.com>']
+    
+CSRF_COOKIE_DOMAIN = '.ws-eu107.gitpod.io'
 
 
 # Application definition
@@ -49,11 +61,13 @@ INSTALLED_APPS = [
     'django_summernote',
     'allauth',
     'allauth.account',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'artspot',
 ]
 
 MIDDLEWARE = [
-     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -65,6 +79,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'artistspot.urls'
 
+
+CRISPY_TEMPLATE_PACK = ('uni_form', 'bootstrap5')
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

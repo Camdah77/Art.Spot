@@ -1,23 +1,27 @@
 {% extends 'base.html' %}
-{% block title %}Register{% endblock %}
-{% block content %}
 {% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
 
 
-<h1>Welcome to our colourful world</h1>
-<br/>
-<div class="alreadymember">Already member?<a href="{% url 'register' %}">Login here</a></div>
-	<div class="row">
-	    <div class="col-md-12 text-center">
-	  	        <hr/>
-	       	    </div>
-	
-<div class="form-group">
-    <form method="POST">
+    {% block title %}Signup{% endblock %}
+    <h1>Welcome to our colourful world</h1>
+
+    <br/>
+
+<div class="alreadymember">Already a member? <a href="{% url 'register' %}">Login here</a></div>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <hr/>
+    </div>
+
+    <form method="post" id="{{ form.helper.form_id }}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="btn btn-secondary">Register</button>
-    </form>
+    {% endblock %}
+        </form>
 </div>
 
+{% crispy form %}
 {% endblock %}

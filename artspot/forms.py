@@ -4,6 +4,8 @@ from django import forms
 from allauth.account.forms import SignupForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Fieldset, Submit
 
 #LOGIN# authentication/forms.py
 
@@ -12,24 +14,25 @@ class LoginForm(forms.Form):
     password = forms.CharField(max_length=63, widget=forms.PasswordInput)
 
 #SIGNUP
-class CustomUserCreationForm(UserCreationForm):
-    username = forms.CharField(label='Artist name')
+class NewUserForm(UserCreationForm):
+    username = forms.CharField(label='Username', max_length=20)
     first_name = forms.CharField(max_length=30, label='First Name')
     last_name = forms.CharField(max_length=30, label='Last Name')
-    email = forms.CharField(max_length=30, label='Email')
-    password1 = forms.CharField(max_length=30, label='Choose a password')  
-    password2 = forms.CharField(max_length=30, label='Type your password again please') 
-    
+    email = forms.EmailField(label='Your email')
+    password1 = forms.CharField(max_length=30, label='Choose a password, please')  
+    password2 = forms.CharField(max_length=30, label='Write your password again please') 
+
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
-    # Override the save method if needed
-    def save(self, request):
-        user = super(CustomSignupForm, self).save(request)
-        user.first_name = self.cleaned_data['first_name']
-        user.last_name = self.cleaned_data['last_name']
-        user.save()
-        return user
+
+    def __init__(self, *args, **kwargs):
+        super(NewUserForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = 'id-contact-form'
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Send message'))
+    
 # Marketplace
 class AddArtworkForm(forms.ModelForm):
     class Meta:
