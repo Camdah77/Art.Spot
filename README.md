@@ -4,7 +4,7 @@ Welcome ArtSpot,
 
 Artspot is a community for artists who want to grow in their artistry. Here you can take part in live events, courses and read blogs.
 
-![Site across devices] ADD: Site across devices: img 
+Live version:  https://artspot-1537d6fa1517.herokuapp.com/
 
 ## Table of Contents
 + [UX](#ux "UX")
