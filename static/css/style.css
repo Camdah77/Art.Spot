@@ -183,11 +183,13 @@ button.btn.btn-signup.right {
     text-transform: uppercase;
 }
 
-.containerform {
-    width: 100%;
-    margin-top: 16vh;
+.container-fluid{
+    background-color: #C6AB6B;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
 
 }
+
 .masthead {
     margin-top: 10px;
     overflow: hidden;

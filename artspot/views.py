@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from django.conf import settings 
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm, UserCreationForm, AuthenticationForm
 from django.contrib.auth.views import PasswordChangeView, LogoutView
 from django.contrib import messages
@@ -10,7 +11,7 @@ from django.template import loader
 from django.urls import reverse, reverse_lazy
 from django.views import generic, View
 from django.views.generic import ListView, DetailView, CreateView, TemplateView
-from .models import Artwork, Post, Comment
+from .models import Artwork, Post, Comment, NewUser
 from .forms import LoginForm, NewUserForm, AddArtworkForm, CommentForm
 from django.contrib.auth.forms import UserCreationForm
 
@@ -35,11 +36,8 @@ def UserRegisterView(request):
     return render(request, 'members/register.html')  
 def profile(request):
     return render(request, 'members/profile.html')  
-def signout(request):
-    return render(request, 'members/logout.html')
-
-
-
+def welcome(request):
+    return render(request, 'members/welcome.html')
 
 
 # members/login.html
@@ -60,19 +58,22 @@ def custom_login(request):
         return render(request, 'members/login.html', {})
 
 # members/register.html
-def registration(request):
+def register(request):
     if request.method == 'POST':
         form = NewUserForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            messages.success(request, 'Registration successful. You can now log in.')
-            return redirect('login')  # Redirect to your login page
+            # Process the valid form (e.g., save user) and redirect
+            # This part is missing in your code
+            return redirect('members/welcome.html')
+        else:
+            # If the form is not valid, you can handle it here
+            print(form.errors)
     else:
         form = NewUserForm()
 
-    return render(request, 'members/register.html', {'form': form})
-
-
+    context = {'form': form}
+    return render(request, 'members/register.html', context)
+            
 # members/logout.html
 def LogoutView(request):
      return render(request, 'members/logout.html')

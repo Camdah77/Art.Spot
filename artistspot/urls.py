@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 from artspot.views import (
-    landing_page, add_artwork, edit_artwork, delete_artwork, PostList, custom_login, LogoutView, 
-    PostDetail, home, blog, events, market, registration, about, Post_like)
+    landing_page, add_artwork, edit_artwork, delete_artwork, PostList, custom_login, LogoutView, register,
+    PostDetail, home, blog, events, market, about, Post_like, welcome)
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
@@ -21,7 +21,8 @@ urlpatterns = [
     path('blog/', PostList.as_view(), name='blog'),
     path('login/', custom_login, name='login'),
     path('logout/', LogoutView, name='logout'),
-    path('register/', registration, name='register'),
+    path('register/', register, name='register'),
+    path('welcome/', welcome, name='welcome'),
     path('<slug:slug>/', PostDetail.as_view(), name='post_detail'),
     path('', home, name='home'),
   

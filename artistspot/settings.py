@@ -62,7 +62,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'crispy_forms',
-    'crispy_bootstrap5',
+    'crispy_bootstrap4',
     'artspot',
 ]
 
@@ -79,9 +79,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'artistspot.urls'
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-CRISPY_TEMPLATE_PACK = ('uni_form', 'bootstrap5')
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -110,7 +110,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
