@@ -6,6 +6,8 @@ from artspot.views import (
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from django_summernote import views as django_summernote_views
+
 
 app_name = 'artspot'
 
@@ -26,6 +28,7 @@ urlpatterns = [
     path('<slug:slug>/', PostDetail.as_view(), name='post_detail'),
     path('members/', include('allauth.urls')),
     path('', home, name='home'),
+    path('summernote/', include('django_summernote.urls')),
  ]
 
 
